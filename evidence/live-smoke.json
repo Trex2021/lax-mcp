@@ -1,6 +1,6 @@
 {
   "kind": "live-public-reads",
-  "started": "2026-10-23T01:42:22.800Z",
+  "started": "2026-10-23T02:57:28.311Z",
   "baseUrl": "https://lax.kognai.ai/registry",
   "noWrites": true,
   "node": "v24.19.0",
@@ -12,7 +12,7 @@
         "limit": 3
       },
       "isError": false,
-      "durationMs": 4020,
+      "durationMs": 3901,
       "responseShape": [
         "jobs",
         "count"
@@ -24,7 +24,7 @@
         "id": "a14478ee-35f7-4457-843a-482f25af6dad"
       },
       "isError": false,
-      "durationMs": 630,
+      "durationMs": 737,
       "responseShape": [
         "job"
       ],
@@ -38,7 +38,7 @@
       "tool": "lax_search_agents",
       "arguments": {},
       "isError": false,
-      "durationMs": 842,
+      "durationMs": 809,
       "responseShape": [
         "results",
         "count"
@@ -50,7 +50,7 @@
         "id": "svc-voxight"
       },
       "isError": false,
-      "durationMs": 725,
+      "durationMs": 722,
       "responseShape": [
         "offer"
       ]
@@ -85,7 +85,7 @@
     "lax_get_job",
     "lax_submit"
   ],
-  "finished": "2026-10-23T01:42:29.030Z",
+  "finished": "2026-10-23T02:57:34.492Z",
   "successfulCalls": 4,
   "failedCalls": 0
 }

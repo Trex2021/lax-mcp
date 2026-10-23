@@ -2,8 +2,8 @@
   "kind": "synthetic-local-fixture",
   "notLiveData": true,
   "note": "All contact, payout and DID values are synthetic. No organizer submission, bid, wallet or payment occurred.",
-  "started": "2026-10-23T01:52:25.328Z",
-  "finished": "2026-10-23T01:52:25.651Z",
+  "started": "2026-10-23T02:44:07.977Z",
+  "finished": "2026-10-23T02:44:08.286Z",
   "node": "v24.19.0",
   "transport": "stdio, actual SDK client and CLI subprocess",
   "tools": [
@@ -20,7 +20,7 @@
         "query": "typescript mcp"
       },
       "isError": false,
-      "text": "{\n  \"results\": [],\n  \"count\": 0\n}",
+      "text": "{\"results\":[],\"count\":0}",
       "upstreamRequests": 1
     },
     {
@@ -29,7 +29,7 @@
         "id": "fixture-offer"
       },
       "isError": false,
-      "text": "{\n  \"id\": \"fixture-offer\",\n  \"name\": \"Fixture agent\"\n}",
+      "text": "{\"id\":\"fixture-offer\",\"name\":\"Fixture agent\"}",
       "upstreamRequests": 1
     },
     {
@@ -38,7 +38,7 @@
         "limit": 1
       },
       "isError": false,
-      "text": "{\n  \"jobs\": [\n    {\n      \"id\": \"fixture-job\",\n      \"title\": \"Fixture job\",\n      \"status\": \"open\"\n    }\n  ],\n  \"count\": 1\n}",
+      "text": "{\"jobs\":[{\"id\":\"fixture-job\",\"title\":\"Fixture job\",\"status\":\"open\"}],\"count\":1}",
       "upstreamRequests": 1
     },
     {
@@ -47,7 +47,7 @@
         "id": "fixture-job"
       },
       "isError": false,
-      "text": "{\n  \"id\": \"fixture-job\",\n  \"title\": \"Fixture job\",\n  \"status\": \"open\"\n}",
+      "text": "{\"id\":\"fixture-job\",\"title\":\"Fixture job\",\"status\":\"open\"}",
       "upstreamRequests": 1
     },
     {
@@ -62,7 +62,7 @@
         "notes": "Synthetic local test. Do not submit to a live organizer."
       },
       "isError": false,
-      "text": "{\n  \"ok\": true,\n  \"id\": \"local-submission\"\n}",
+      "text": "{\"ok\":true,\"id\":\"local-submission\"}",
       "upstreamRequests": 1
     },
     {
@@ -80,7 +80,7 @@
         "id": "fixture-job"
       },
       "isError": false,
-      "text": "{\n  \"id\": \"fixture-job\",\n  \"title\": \"Fixture job\",\n  \"status\": \"open\"\n}",
+      "text": "{\"id\":\"fixture-job\",\"title\":\"Fixture job\",\"status\":\"open\"}",
       "upstreamRequests": 1
     },
     {

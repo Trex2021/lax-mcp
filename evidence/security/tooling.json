@@ -1,0 +1,57 @@
+{
+  "recorded": "2026-10-23T02:53:18.174420+00:00",
+  "baseCommit": "0be67f9b4f779ceb2c4821d96a4e08826b2a948e",
+  "gitleaks": {
+    "tag": "v8.30.1",
+    "release": "https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1",
+    "archive": "gitleaks_8.30.1_linux_x64.tar.gz",
+    "sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+  },
+  "semgrep": {
+    "version": "1.182.1",
+    "rulePacks": [
+      "p/javascript",
+      "p/typescript",
+      "p/github-actions"
+    ],
+    "metrics": "off",
+    "results": 0,
+    "errors": 0,
+    "files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/codeql.yml",
+      "scripts/build.mjs",
+      "scripts/demo.mjs",
+      "scripts/live-smoke.mjs",
+      "scripts/local-pressure.mjs",
+      "scripts/mutations.mjs",
+      "scripts/package-smoke.mjs",
+      "scripts/test.mjs",
+      "src/cli.ts",
+      "src/http.ts",
+      "src/index.ts",
+      "src/registry.ts",
+      "src/schemas.ts",
+      "test/acceptance.test.mjs",
+      "test/helpers.mjs",
+      "test/security.test.mjs",
+      "test/transports.test.mjs"
+    ]
+  },
+  "codexDeepScan": {
+    "executed": false,
+    "reason": "Required Codex Security coordinator tool is unavailable in this session."
+  },
+  "codeql": {
+    "status": "configured; awaiting GitHub execution"
+  },
+  "cleanBuildRemovedSyntheticSentinel": true,
+  "packageFileAllowlistCount": 19,
+  "baselineCorpus": {
+    "tests": 18,
+    "passed": 9,
+    "failed": 9,
+    "expectedRegressionFailures": true,
+    "note": "Failures include new hardening requirements, not nine independently exploitable vulnerabilities."
+  }
+}

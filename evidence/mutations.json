@@ -1,9 +1,9 @@
 {
   "kind": "controlled-local-mutation-check",
-  "started": "2026-10-23T01:52:22.651Z",
+  "started": "2026-10-23T02:35:53.347Z",
   "node": "v24.19.0",
   "baselinePassed": true,
-  "note": "Five targeted mutants, not an exhaustive mutation score or organizer hidden tests.",
+  "note": "Eight targeted mutants, not an exhaustive mutation score or organizer hidden tests.",
   "mutants": [
     {
       "name": "A2 wrong jobs route",
@@ -11,8 +11,10 @@
       "failedAssertions": [
         "✖ A2: lax_list_jobs maps arguments to the documented registry call (GET)",
         "✖ A2: default registry and global fetch are used, with no wallet or payment headers",
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins",
         "✖ A2: lax_list_jobs maps arguments to the documented registry call (GET)",
-        "✖ A2: default registry and global fetch are used, with no wallet or payment headers"
+        "✖ A2: default registry and global fetch are used, with no wallet or payment headers",
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins"
       ]
     },
     {
@@ -42,6 +44,9 @@
         "✖ A3: network failure is bounded, does not leak the exception, and permits recovery",
         "✖ A3: an upstream that ignores abort still times out without hanging the next call",
         "✖ A4: read-only mode blocks the write while all read tools remain available",
+        "✖ A3: redirects never reach their destination, including after a valid tool request",
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins",
+        "✖ A2: prompt-like registry content is returned as data without executing any extra call",
         "✖ A3: HTTP 400 preserves the registry reason, then a subsequent call succeeds",
         "✖ A3: HTTP 401 preserves the registry reason, then a subsequent call succeeds",
         "✖ A3: HTTP 403 preserves the registry reason, then a subsequent call succeeds",
@@ -56,7 +61,10 @@
         "✖ A3: invalid UTF-8 retains HTTP status and permits a subsequent valid response",
         "✖ A3: network failure is bounded, does not leak the exception, and permits recovery",
         "✖ A3: an upstream that ignores abort still times out without hanging the next call",
-        "✖ A4: read-only mode blocks the write while all read tools remain available"
+        "✖ A4: read-only mode blocks the write while all read tools remain available",
+        "✖ A3: redirects never reach their destination, including after a valid tool request",
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins",
+        "✖ A2: prompt-like registry content is returned as data without executing any extra call"
       ]
     },
     {
@@ -74,10 +82,38 @@
       "detected": true,
       "failedAssertions": [
         "✖ A4: read-only mode blocks the write while all read tools remain available",
-        "✖ A4: read-only mode blocks the write while all read tools remain available"
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins",
+        "✖ A2: prompt-like registry content is returned as data without executing any extra call",
+        "✖ A4: read-only mode blocks the write while all read tools remain available",
+        "✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins",
+        "✖ A2: prompt-like registry content is returned as data without executing any extra call"
+      ]
+    },
+    {
+      "name": "A2 nested JSON output amplification",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A2: deeply nested registry JSON cannot amplify the bounded MCP result",
+        "✖ A2: deeply nested registry JSON cannot amplify the bounded MCP result"
+      ]
+    },
+    {
+      "name": "A6 HTTP admission guard removed",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A6: HTTP bounds concurrent requests before parsing and recovers after capacity is released",
+        "✖ A6: HTTP bounds concurrent requests before parsing and recovers after capacity is released"
+      ]
+    },
+    {
+      "name": "A6 Host allowlist removed",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A6: malformed Host authorities are rejected before routes or registry I/O",
+        "✖ A6: malformed Host authorities are rejected before routes or registry I/O"
       ]
     }
   ],
   "restoredBaselinePassed": true,
-  "finished": "2026-10-23T01:52:25.134Z"
+  "finished": "2026-10-23T02:36:06.544Z"
 }

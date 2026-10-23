@@ -1,0 +1,99 @@
+✔ A1: factory returns an unconnected SDK server and performs no I/O (7.829942ms)
+✔ A1: real SDK client discovers exactly five described tools and schemas (16.74024ms)
+✔ A2: lax_search_agents maps arguments to the documented registry call (GET) (10.721871ms)
+✔ A2: lax_search_agents maps arguments to the documented registry call (GET) (2.78008ms)
+✔ A2: lax_get_offer maps arguments to the documented registry call (GET) (2.744657ms)
+✔ A2: lax_list_jobs maps arguments to the documented registry call (GET) (2.483734ms)
+✔ A2: lax_get_job maps arguments to the documented registry call (GET) (5.644948ms)
+✔ A2: lax_submit maps arguments to the documented registry call (POST) (2.572408ms)
+✔ A2: default registry and global fetch are used, with no wallet or payment headers (2.728702ms)
+✔ A3: HTTP 400 preserves the registry reason, then a subsequent call succeeds (6.421705ms)
+✔ A3: HTTP 401 preserves the registry reason, then a subsequent call succeeds (2.42774ms)
+✔ A3: HTTP 403 preserves the registry reason, then a subsequent call succeeds (1.6827ms)
+✔ A3: HTTP 404 preserves the registry reason, then a subsequent call succeeds (1.804383ms)
+✔ A3: HTTP 409 preserves the registry reason, then a subsequent call succeeds (1.845885ms)
+✔ A3: HTTP 429 preserves the registry reason, then a subsequent call succeeds (4.044862ms)
+✔ A3: HTTP 500 preserves the registry reason, then a subsequent call succeeds (2.167399ms)
+✔ A3: HTTP 503 preserves the registry reason, then a subsequent call succeeds (1.462649ms)
+✔ A3: nested registry error messages are retained (1.538643ms)
+✔ A3: plain text errors preserve useful reasons and exclude proxy pages (1.939706ms)
+✔ A3: JSON string errors preserve useful reasons and exclude proxy pages (1.254396ms)
+✔ A3: HTML proxy page errors preserve useful reasons and exclude proxy pages (1.269138ms)
+✔ A3: invalid UTF-8 retains HTTP status and permits a subsequent valid response (2.246388ms)
+✔ A3: network failure is bounded, does not leak the exception, and permits recovery (1.553656ms)
+✔ A3: an upstream that ignores abort still times out without hanging the next call (17.462966ms)
+✔ A3: invalid JSON and oversized responses are errors with a usable next call (3.576838ms)
+✔ A4: missing offer id is refused before any registry request (2.02182ms)
+✔ A4: empty id is refused before any registry request (1.554037ms)
+✔ A4: path traversal is refused before any registry request (1.506244ms)
+✔ A4: dot path is refused before any registry request (2.251665ms)
+✔ A4: long query is refused before any registry request (2.279978ms)
+✔ A4: fractional limit is refused before any registry request (1.454717ms)
+✔ A4: large limit is refused before any registry request (1.668639ms)
+✔ A4: negative offset is refused before any registry request (1.320845ms)
+✔ A4: unknown track is refused before any registry request (1.419194ms)
+✔ A4: unexpected field is refused before any registry request (1.345333ms)
+✔ A4: bad payout is refused before any registry request (1.490381ms)
+✔ A4: non-hex payout is refused before any registry request (1.382389ms)
+✔ A4: http link is refused before any registry request (1.220755ms)
+✔ A4: URL credentials is refused before any registry request (1.319764ms)
+✔ A4: missing DID is refused before any registry request (1.852275ms)
+✔ A4: invalid DID is refused before any registry request (1.433365ms)
+✔ A4: empty contact is refused before any registry request (2.00243ms)
+✔ A4: multiline contact is refused before any registry request (1.220606ms)
+✔ A4: long notes is refused before any registry request (4.363711ms)
+✔ A4: reserved characters in an identifier cannot become route structure (1.820958ms)
+✔ A5: optional diagnostics disclose metadata only, even on a failed submission (1.595049ms)
+✔ A5: an audit callback cannot crash a successful registry call (1.508488ms)
+✔ A4: read-only mode blocks the write while all read tools remain available (1.552414ms)
+✔ A3: aborted calls issue no upstream request (0.648735ms)
+✔ A3: oversized content-length is refused before reading its body (0.517067ms)
+✔ A4: unsafe configuration fails at construction (0.372069ms)
+✔ A7: README documents both transports, client config, all tools, and publication status (7.78199ms)
+✔ A2: deeply nested registry JSON cannot amplify the bounded MCP result (24.600718ms)
+✔ A5: a rejecting asynchronous audit hook cannot crash the process or expose its exception (260.388722ms)
+✔ A6: malformed Host authorities are rejected before routes or registry I/O (42.003263ms)
+✔ A6: HTTP bounds concurrent requests before parsing and recovers after capacity is released (42.113444ms)
+✔ A3: redirects never reach their destination, including after a valid tool request (13.567599ms)
+✔ A3: real MCP cancellation aborts the active registry fetch and a later call works (5.398947ms)
+✔ A4: hostile identifiers stay under the configured registry origin and route (52.672284ms)
+✔ A4: forged authorization fields are refused and prototype payloads cannot pollute objects (4.108828ms)
+✔ A6: malformed UTF-8 is refused before replacement characters can reach the registry (12.569409ms)
+✔ A6: non-UTF-8 JSON is refused with 415 before registry I/O (4.08431ms)
+✔ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins (16.121885ms)
+✔ A4: invalid HTTP concurrency settings are rejected at construction (0.580412ms)
+✔ A6: compressed requests still obey the decoded body size limit (12.706665ms)
+✔ A6: a disconnected caller releases capacity and aborts its active upstream request (10.974591ms)
+✔ A5: an oversized stdio message closes within the bound without logging its private marker (303.51662ms)
+✔ A2: a supplied artifact URL remains data and cannot become a server-side fetch (4.072423ms)
+✔ A2: prompt-like registry content is returned as data without executing any extra call (3.020602ms)
+✔ A6: hostile origins, missing authentication and preflights issue no upstream request (16.125465ms)
+✔ A6: real SDK stdio client initializes, lists, reads and closes the packaged CLI (353.120021ms)
+✔ A5: every stdout line is MCP JSON and private submission inputs are absent from logs (305.312451ms)
+✔ A6: real SDK Streamable HTTP client can use all five tools (103.115146ms)
+✔ A6: HTTP enforces origin, host, media type, method and body size limits (26.925493ms)
+✔ A6: HTTP bearer authentication protects both protocol and health endpoints (27.044221ms)
+✔ A6: CLI help and invalid flags never produce non-protocol stdout (1633.16701ms)
+✔ A6: CLI accepts PORT and reports its actual loopback HTTP endpoint on stderr (310.183729ms)
+ℹ tests 77
+ℹ suites 0
+ℹ pass 77
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4665.68738
+ℹ start of coverage report
+ℹ -------------------------------------------------------------------
+ℹ file         | line % | branch % | funcs % | uncovered lines
+ℹ -------------------------------------------------------------------
+ℹ dist         |        |          |         |
+ℹ  cli.js      | 100.00 |    81.25 |  100.00 |
+ℹ  http.js     |  92.62 |    86.76 |  100.00 | 76-78 106-108 117-121
+ℹ  index.js    | 100.00 |   100.00 |  100.00 |
+ℹ  registry.js |  99.43 |    96.55 |  100.00 | 27
+ℹ  schemas.js  |  95.45 |    91.67 |  100.00 | 15-16
+ℹ -------------------------------------------------------------------
+ℹ all files    |  97.29 |    92.27 |  100.00 |
+ℹ -------------------------------------------------------------------
+ℹ end of coverage report

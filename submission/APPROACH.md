@@ -16,11 +16,11 @@ an unconnected createLaxMcpServer(options?) and uses the injected baseUrl/fetch
 for all five tools. Results preserve registry JSON as text, and errors are
 recoverable tool results. The source is MIT licensed.
 
-The offline acceptance suite has passed 59 tests on Node 20.20.2 and 24.19.0.
+The offline acceptance suite has passed 77 tests on Node 20.20.2 and 24.19.0.
 Each test is named A1 to A7. Real SDK clients test in-memory transport, a stdio
 CLI subprocess and Streamable HTTP. Assertions check exact routes and bodies,
 error recovery, invalid input before I/O, protocol-only stdout, private-data
-logging, both transports and client documentation. Five targeted planted
+logging, both transports and client documentation. Eight targeted planted
 regressions are detected by assertions, then the originals are restored.
 
 A clean tarball install checks factory and HTTP exports, a real SDK client and

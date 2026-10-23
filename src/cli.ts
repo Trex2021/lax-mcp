@@ -50,8 +50,16 @@ async function main(): Promise<void> {
     process.once('SIGTERM', stop);
   } else {
     const server = createLaxMcpServer(options);
-    await server.connect(new StdioServerTransport());
-    const stop = (): void => { void server.close().finally(() => process.exit(0)); };
+    const transport = new StdioServerTransport(process.stdin, process.stdout, { maxBufferSize: 64 * 1024 });
+    let stopping = false;
+    transport.onclose = () => {
+      // Pausing an open pipe can leave its process alive after a buffer-limit
+      // rejection. Close the input handle without printing any supplied data.
+      process.stdin.destroy();
+      if (!stopping) process.exitCode = 1;
+    };
+    await server.connect(transport);
+    const stop = (): void => { stopping = true; void server.close().finally(() => process.exit(0)); };
     process.once('SIGINT', stop);
     process.once('SIGTERM', stop);
   }

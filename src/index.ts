@@ -8,12 +8,12 @@ import type { ToolName } from './schemas.js';
 
 export { TOOL_NAMES } from './schemas.js';
 export type { LaxMcpOptions, AuditEvent } from './registry.js';
-export const VERSION = '0.1.0';
+export const VERSION = '0.1.1';
 
 async function runTool(registry: RegistryClient, name: ToolName, args: Record<string, unknown>, signal: AbortSignal): Promise<CallToolResult> {
   const started = performance.now();
   try {
-    let answer: unknown;
+    let answer: string;
     switch (name) {
       case 'lax_search_agents': answer = await registry.request('search', args, undefined, signal); break;
       case 'lax_get_offer': answer = await registry.request(`offers/${encodeURIComponent(String(args.id))}`, undefined, undefined, signal); break;
@@ -27,7 +27,7 @@ async function runTool(registry: RegistryClient, name: ToolName, args: Record<st
       }
     }
     registry.audit({ tool: name, outcome: 'ok', durationMs: Math.round(performance.now() - started) });
-    return { content: [{ type: 'text', text: JSON.stringify(answer, null, 2) }] };
+    return { content: [{ type: 'text', text: answer }] };
   } catch (error) {
     const known = error instanceof RegistryError ? error : new RegistryError('Tool request failed.');
     registry.audit({ tool: name, outcome: 'error', durationMs: Math.round(performance.now() - started),

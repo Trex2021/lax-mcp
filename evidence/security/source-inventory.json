@@ -1,0 +1,27 @@
+{
+  "recorded": "2026-10-23T02:59:42.587432+00:00",
+  "files": {
+    ".github/workflows/ci.yml": "621b793aa68991d536ad9b8424c4fe1b5d93cacdb7d9761eb3735e90b6e4ece0",
+    ".github/workflows/codeql.yml": "f1d58dc92f4e7d30ce55ae587df822ae7178c790b72364df827413cd191ebe6a",
+    "scripts/build.mjs": "d0f908fb6f674919d26903e9a6b95a0ce0331fb48ebbce2a8c74d8924ea3dab9",
+    "scripts/demo.mjs": "2e9f504c5011a95f0cce504cd12846e64e0e411dbf789d3c10d71bf0290351d8",
+    "scripts/live-smoke.mjs": "5f528a3b73578ad7cfd31d91f693c1a5550fe2266715beb64fb0c2d85ce7bf98",
+    "scripts/local-pressure.mjs": "ed2f09c24385d61733e7adc2c4e2a83ce0ac875c968b2c60fef622b21e9d5d1a",
+    "scripts/mutations.mjs": "e7e5f4ed079300713d0dbba4b59c767ee6ba06fcc1577908b6eac7749955da37",
+    "scripts/package-smoke.mjs": "7b93e8879465627947f470b2d954ca77eb98ae5841bc0133ab260c637a6e30e2",
+    "scripts/test.mjs": "d83867e9611d49ccb9f1aca1620ff04aedab5d18d0e5cf1d47c75735579f7e02",
+    "src/cli.ts": "446cfa68997b6f1dd851c4a2becbbabbb9d9e2a0a19d0b0349ac8fb9905b6b6b",
+    "src/http.ts": "38803229aa4cdf3c82f2d412ce8f29450c7f651dcbb5d0e19b76177054685327",
+    "src/index.ts": "9cbe931b31f370c20d4ea241af009546cedcce35b42bf895b469065ab1b9ba9e",
+    "src/registry.ts": "6d8663fd2fc6bf8dc4ffbf2b40d2522bd592964605eb1549c9063dab36e156b8",
+    "src/schemas.ts": "70954f38b61ea69523c2696fd3986c64acdff154c660dd8188a58966b6b83fd3",
+    "test/acceptance.test.mjs": "0f6fe76b44b14e44f1ef8a0fdbb1dddc06a09b74b26435bd39b1973cfbec2e4d",
+    "test/helpers.mjs": "1ff5799b192de1a51e5853844c5f6f0e069df31ba2a27718856c150b541feadf",
+    "test/security.test.mjs": "610072705c269b4c7cf8aa9bc2defa3652a754dbeade7d2311c80204b8c2dbd9",
+    "test/transports.test.mjs": "6223f27a48f4e69803e50b438df3abd408604b78ea4aaa12148ee6c0da3b0436",
+    "package.json": "95daa7b1286f46b607b0ac5d18b523afb842e0e8f769cb6121927337ed5443a8",
+    "package-lock.json": "f4a20aea9e3db8d8632a19fbcb5cd2e4d11cf72ced5b1534e29915e0e8e1ffbb",
+    "tsconfig.json": "23fefb457760f5ecba437ab589867885f87033e80c64002218b850cec1cd84a7",
+    ".semgrepignore": "10cfd69932ba119ae9b869b10557d45e2f0edc9568115d5af37a4632f85b831c"
+  }
+}
