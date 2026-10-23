@@ -1,28 +1,37 @@
 # Recorded verification
 
-Run date: 23 October 2026 (UTC). These are candidate results, not organizer
-acceptance. Test names A1 to A7 map directly to the job specification.
+Current candidate: 0.1.1, reviewed 23 October 2026. These are candidate results,
+not organizer acceptance. Test names A1 to A7 map to the job specification.
 
-| Check | Result | Evidence |
+| Current check | Result | Evidence |
 | --- | --- | --- |
-| Offline suite, Node 20.20.2 | 59 passed, 0 failed | ../evidence/tests-node20.txt |
-| Offline suite, Node 24.19.0 | 59 passed, 0 failed | ../evidence/coverage-node24.txt |
-| Built-in coverage, compiled source | 97.51 percent lines, 92.44 percent branches | ../evidence/coverage-node24.txt |
-| Planted regressions | 5 targeted faults detected; baseline restored | ../evidence/mutations.json |
-| Synthetic stdio demonstration | Five tools, 503 recovery, pre-I/O refusal passed | ../evidence/demo.json |
-| Live public MCP reads | 4 successes, HTTP 200; 0 writes | ../evidence/live-smoke.json |
-| Fresh tarball install | Factory, HTTP export, MCP client, bin passed | ../evidence/package.json |
-| GitHub Actions, published source | Node 20, 22 and 24 jobs all passed | [run 39886594194](https://github.com/Trex2021/lax-mcp/actions/runs/39886594194), ../evidence/ci.json |
-| Unpaid listing validation | HTTP 402: offer valid, 0.01 USDC required | ../evidence/listing-quote.json |
+| Offline Node 20.20.2 | 77 passed, 0 failed | [log](../evidence/security/tests-node20.txt) |
+| Offline Node 24.19.0 | 77 passed, 0 failed | [coverage](../evidence/security/coverage-node24.txt) |
+| Built-in coverage, compiled source | 97.29 percent lines, 92.27 percent branches, 100 percent functions | [coverage](../evidence/security/coverage-node24.txt) |
+| Planted regressions | 8 detected, originals restored | [record](../evidence/mutations.json) |
+| Loopback overload | 200 requests, concurrency bounded, recovery passed | [record](../evidence/security/local-pressure.json) |
+| Security review | Fixes, analysis scope and limits | [review](SECURITY-REVIEW.md) |
+| Clean package | Current version and integrity in record | [record](../evidence/package.json) |
+| Synthetic stdio demonstration | Five tools, recovery and pre-I/O refusal passed | [record](../evidence/demo.json) |
+| Live public reads | 4 successes, HTTP 200, 0 writes | [record](../evidence/live-smoke.json) |
+| Unpaid listing validation | HTTP 402: offer valid, 0.01 USDC required | [record](../evidence/listing-quote.json) |
 
-The production dependency audit returned zero known advisories at check time.
+Current GitHub cross-platform and CodeQL outcomes will be recorded after the
+corresponding runs complete. A6 still requires npm publication and readback.
+
+The production and dev dependency audit returned zero known advisories at check time.
 This is a point-in-time advisory lookup, not a security guarantee. Dependencies
-are locked. The linked CI run verifies commit
-ab7ec04ef6887a4afaf857738ad00ea77d4905f9 on Node 20, 22 and 24. The later
-documentation commit records that outcome. The listing quote did not include
+are locked. The listing quote did not include
 a DID or any payment header, and did not create a listing. A final offer with
 its real DID needs a fresh quote before wallet authorization.
 
 No wallet signature, listing, bid, PACT, acceptance, npm publication or live
 write is represented by this table. A6 remains incomplete until npm publication
-is read back. See ../submission/STATUS.md.
+is read back. See [entry status](../submission/STATUS.md).
+
+## Historical 0.1.0 CI
+
+[Run 39886594194](https://github.com/Trex2021/lax-mcp/actions/runs/39886594194)
+passed 59 tests on Node 20, 22 and 24 for commit
+ab7ec04ef6887a4afaf857738ad00ea77d4905f9. [Its record](../evidence/ci.json)
+is historical and does not establish the 0.1.1 outcome.

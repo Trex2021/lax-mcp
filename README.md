@@ -20,6 +20,8 @@ node dist/cli.js --read-only
 
 The last command starts MCP on **stdio**, so an idle terminal is expected. An MCP
 client supplies the requests. No wallet, API key or funds are needed for reads.
+The stdio input buffer is limited to 64 KiB. Exceeding the limit
+closes the input transport and exits without printing the input contents.
 
 ## Claude Desktop configuration
 
@@ -61,7 +63,15 @@ proxy in front of loopback and explicitly configure its hosts and origins in
 
 The package subpath `@trex2021/lax-mcp/http` exports `createLaxHttpApp` and
 `startLaxHttpServer`. Optional `allowedHosts`, `allowedOrigins` and `token` apply
-to both `/mcp` and `/health`.
+to both `/mcp` and `/health`. UTF-8 JSON requests are limited to 64 KiB after
+decompression. Invalid UTF-8 and other character encodings are refused before
+registry I/O. At most 16 MCP POST requests are admitted concurrently by default;
+additional requests receive 503 without a queue or retry. Programmatic
+`maxConcurrentRequests` accepts 1 to 1024. The CLI listener also limits connections
+to 64, request headers to 10 seconds and request-body arrival to 30 seconds.
+These local bounds complement authentication; they are not a public-service
+rate limit. Startup configuration is captured, so later mutation of its object
+does not re-enable submissions, change authentication or expand origins.
 
 ## Embed in another client or test
 
@@ -154,7 +164,8 @@ submission endpoint. A registered tool is not permission to use it. Configure
 
 ## Errors, cancellation and privacy
 
-- Success returns the registry's JSON as MCP text content.
+- Success returns validated registry JSON text, preserving its bounded wire
+  representation without expanding deeply nested data through pretty printing.
 - Registry 4xx/5xx errors return `isError: true`, the HTTP status and a bounded
   registry error message. HTML error pages are not echoed.
 - Network failures, invalid JSON, response-size limits, cancellation and timeout
@@ -167,15 +178,20 @@ submission endpoint. A registered tool is not permission to use it. Configure
   stdout only for MCP protocol messages. HTTP access logs are not enabled.
 - Optional `audit` callbacks receive only tool name, outcome, duration and HTTP
   status, never contacts, payout addresses, request headers, arguments or bodies.
+  Both synchronous exceptions and rejected asynchronous callbacks are contained.
 
 Registry data remains untrusted. It cannot authorize tool use, spending,
 communications or changes to this server. See [SECURITY.md](SECURITY.md).
+The [security and reliability review](docs/SECURITY-REVIEW.md) records fixes,
+adversarial tests, scanner coverage and outstanding verification gates.
 
 ## Verify the candidate
 
 ```sh
 npm test
 npm run test:coverage
+npm run test:security
+npm run test:pressure
 npm run test:mutations
 npm run test:package
 npm run demo
@@ -191,12 +207,14 @@ and a subprocess for stdio, plus a real loopback HTTP listener.
 local registry. It is explicitly a fixture demonstration, not live Kognai data.
 `npm run smoke:live` performs only public GET requests through actual MCP tools
 and records what succeeded or failed. A live outage is recorded as an outage.
-`npm run test:mutations` deliberately introduces five regressions into compiled
+`npm run test:mutations` deliberately introduces eight regressions into compiled
 local files, verifies that assertions fail, then restores the files. Run it
 alone, never concurrently with a build or tests. This is a targeted check,
 not an exhaustive mutation score. `npm run test:package` installs the actual
 tarball into a fresh temporary directory and checks package imports, an SDK
 client and the executable bin. Installing dependencies requires npm access.
+The build clears generated output first. The package check uses an exact
+release-file allowlist, so stale output cannot silently enter the tarball.
 
 See [acceptance matrix](docs/ACCEPTANCE.md) and the evidence directory for actual
 results, or the [recorded verification](docs/VERIFICATION.md). Publication and
@@ -206,6 +224,7 @@ participation remain separate gates.
 
 ```sh
 npm run build
+npm run check
 npm pack --ignore-scripts
 # Once the operator confirms a controlled npm scope and account:
 npm publish --access public --ignore-scripts

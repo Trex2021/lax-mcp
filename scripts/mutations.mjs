@@ -15,15 +15,21 @@ const mutants = [
     from: ".regex(/^0x[0-9a-fA-F]{40}$/, 'Use a 0x-prefixed 20-byte EVM address.')", to: '' },
   { name: 'A4 read-only guard removed', file: 'dist/index.js',
     from: 'if (!registry.allowSubmit)', to: 'if (false)' },
+  { name: 'A2 nested JSON output amplification', file: 'dist/index.js',
+    from: 'text: answer', to: 'text: JSON.stringify(JSON.parse(answer), null, 2)' },
+  { name: 'A6 HTTP admission guard removed', file: 'dist/http.js',
+    from: 'if (active >= maxConcurrent)', to: 'if (false)' },
+  { name: 'A6 Host allowlist removed', file: 'dist/http.js',
+    from: '!hosts.has(authority.hostname)', to: 'false' },
 ];
 const originals = new Map();
 for (const { file } of mutants) if (!originals.has(file)) originals.set(file, await readFile(file, 'utf8'));
-const run = () => spawnSync(process.execPath, ['--test', '--test-reporter=spec', '--test-concurrency=1', 'test/acceptance.test.mjs'],
+const run = () => spawnSync(process.execPath, ['--test', '--test-reporter=spec', '--test-concurrency=1', 'test/acceptance.test.mjs', 'test/security.test.mjs'],
   { encoding: 'utf8', timeout: 30000, maxBuffer: 2 * 1024 * 1024 });
 const baseline = run();
 assert.equal(baseline.status, 0, 'Baseline must pass before introducing faults.');
 const report = { kind: 'controlled-local-mutation-check', started: new Date().toISOString(),
-  node: process.version, baselinePassed: true, note: 'Five targeted mutants, not an exhaustive mutation score or organizer hidden tests.', mutants: [] };
+  node: process.version, baselinePassed: true, note: 'Eight targeted mutants, not an exhaustive mutation score or organizer hidden tests.', mutants: [] };
 try {
   for (const mutant of mutants) {
     const source = originals.get(mutant.file);
@@ -44,4 +50,4 @@ assert.ok(report.restoredBaselinePassed);
 report.finished = new Date().toISOString();
 await mkdir('evidence', { recursive: true });
 await writeFile('evidence/mutations.json', JSON.stringify(report, null, 2) + '\n');
-console.log('PASS: five deliberately introduced regressions detected; original compiled files restored.');
+console.log('PASS: eight deliberately introduced regressions detected; original compiled files restored.');

@@ -1,6 +1,6 @@
 {
   "name": "@trex2021/lax-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Five LAX registry tools for MCP clients, with stdio and Streamable HTTP transports.",
   "type": "module",
   "license": "MIT",
@@ -16,15 +16,17 @@
   "bin": { "lax-mcp": "dist/cli.js" },
   "files": ["dist", "README.md", "LICENSE", "SECURITY.md"],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test --test-concurrency=1 test/*.test.mjs",
-    "test:coverage": "npm run build && node --experimental-test-coverage --test --test-concurrency=1 test/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node scripts/test.mjs",
+    "test:coverage": "npm run build && node scripts/test.mjs --coverage",
+    "test:security": "npm run build && node --test test/security.test.mjs",
+    "test:pressure": "npm run build && node scripts/local-pressure.mjs",
     "test:mutations": "npm run build && node scripts/mutations.mjs",
     "test:package": "npm run build && node scripts/package-smoke.mjs",
     "smoke:live": "npm run build && node scripts/live-smoke.mjs",
     "demo": "npm run build && node scripts/demo.mjs",
     "pack:check": "npm run build && npm pack --dry-run --ignore-scripts",
-    "check": "npm test && npm run test:mutations && npm run test:package"
+    "check": "npm test && node scripts/local-pressure.mjs && node scripts/mutations.mjs && node scripts/package-smoke.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.1",

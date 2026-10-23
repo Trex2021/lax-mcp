@@ -1,0 +1,182 @@
+ORIGINAL SOURCE: 0be67f9b4f779ceb2c4821d96a4e08826b2a948e
+Current regression corpus against original source; failures below are expected.
+
+✖ A2: deeply nested registry JSON cannot amplify the bounded MCP result (30.198378ms)
+✖ A5: a rejecting asynchronous audit hook cannot crash the process or expose its exception (181.749237ms)
+✖ A6: malformed Host authorities are rejected before routes or registry I/O (23.844966ms)
+✖ A6: HTTP bounds concurrent requests before parsing and recovers after capacity is released (31.056277ms)
+✔ A3: redirects never reach their destination, including after a valid tool request (9.526922ms)
+✔ A3: real MCP cancellation aborts the active registry fetch and a later call works (3.793834ms)
+✔ A4: hostile identifiers stay under the configured registry origin and route (41.160626ms)
+✔ A4: forged authorization fields are refused and prototype payloads cannot pollute objects (6.69154ms)
+✖ A6: malformed UTF-8 is refused before replacement characters can reach the registry (8.596587ms)
+✖ A6: non-UTF-8 JSON is refused with 415 before registry I/O (5.387038ms)
+✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins (4.571263ms)
+✖ A4: invalid HTTP concurrency settings are rejected at construction (1.149659ms)
+✔ A6: compressed requests still obey the decoded body size limit (14.899969ms)
+✔ A6: a disconnected caller releases capacity and aborts its active upstream request (9.9247ms)
+✖ A5: an oversized stdio message closes within the bound without logging its private marker (2016.043389ms)
+✔ A2: a supplied artifact URL remains data and cannot become a server-side fetch (3.644119ms)
+✔ A2: prompt-like registry content is returned as data without executing any extra call (3.230947ms)
+✔ A6: hostile origins, missing authentication and preflights issue no upstream request (17.381261ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 9
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2650.255271
+
+✖ failing tests:
+
+test at test/security.test.mjs:26:1
+✖ A2: deeply nested registry JSON cannot amplify the bounded MCP result (30.198378ms)
+  AssertionError [ERR_ASSERTION]: Wire budget must not turn into an amplified tool result.
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:32:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:35:1
+✖ A5: a rejecting asynchronous audit hook cannot crash the process or expose its exception (181.749237ms)
+  AssertionError [ERR_ASSERTION]: A valid async diagnostics callback must not terminate the MCP process.
+
+  1 !== 0
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:46:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:50:1
+✖ A6: malformed Host authorities are rejected before routes or registry I/O (23.844966ms)
+  AssertionError [ERR_ASSERTION]: 127.0.0.1?ignored
+
+  200 !== 403
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:55:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 403,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:61:1
+✖ A6: HTTP bounds concurrent requests before parsing and recovers after capacity is released (31.056277ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 503
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:74:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:139:1
+✖ A6: malformed UTF-8 is refused before replacement characters can reach the registry (8.596587ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 400
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:147:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:150:1
+✖ A6: non-UTF-8 JSON is refused with 415 before registry I/O (5.387038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 415
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:157:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 415,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:160:1
+✖ A6: HTTP startup options cannot later re-enable writes, change the upstream or expand origins (4.571263ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  401 !== 200
+
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:169:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:179:1
+✖ A4: invalid HTTP concurrency settings are rejected at construction (1.149659ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:181:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /maxConcurrentRequests/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/security.test.mjs:217:1
+✖ A5: an oversized stdio message closes within the bound without logging its private marker (2016.043389ms)
+  Error: Stdio message bound was not enforced
+      at Timeout.<anonymous> (file:///tmp/lax-before-security-25n5g9p5/test/security.test.mjs:227:105)
+      at listOnTimeout (node:internal/timers:635:17)
+      at process.processTimers (node:internal/timers:571:7)

@@ -4,7 +4,6 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
-const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const started = new Date().toISOString();
 function run(command, args, cwd) {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8', timeout: 120000, maxBuffer: 2 * 1024 * 1024 });
@@ -12,11 +11,21 @@ function run(command, args, cwd) {
   return result.stdout;
 }
 const root = process.cwd();
-const packed = JSON.parse(run(npm, ['pack', '--ignore-scripts', '--json'], root))[0];
+function runNpm(args, cwd) {
+  // npm.cmd cannot be spawned without a shell on Windows. npm scripts already
+  // provide the real JS entry point; execute it with Node without a shell.
+  if (process.env.npm_execpath) return run(process.execPath, [process.env.npm_execpath, ...args], cwd);
+  assert.notEqual(process.platform, 'win32', 'On Windows invoke this check with npm run test:package.');
+  return run('npm', args, cwd);
+}
+const packed = JSON.parse(runNpm(['pack', '--ignore-scripts', '--json'], root))[0];
+const allowed = new Set(['package.json', 'README.md', 'LICENSE', 'SECURITY.md',
+  ...['cli', 'http', 'index', 'registry', 'schemas'].flatMap(name => ['js', 'js.map', 'd.ts'].map(ext => `dist/${name}.${ext}`))]);
+assert.deepEqual(packed.files.map(x => x.path).sort(), [...allowed].sort(), 'Refuse missing or unexpected release files.');
 const temp = await mkdtemp(join(tmpdir(), 'lax-package-'));
 try {
   await writeFile(join(temp, 'package.json'), JSON.stringify({ name: 'lax-clean-install-check', private: true, type: 'module' }));
-  run(npm, ['install', '--ignore-scripts', '--no-audit', '--no-fund', resolve(packed.filename)], temp);
+  runNpm(['install', '--ignore-scripts', '--no-audit', '--no-fund', resolve(packed.filename)], temp);
   await writeFile(join(temp, 'check.mjs'), `
     import assert from 'node:assert/strict';
     import { createLaxMcpServer } from '@trex2021/lax-mcp';
@@ -40,6 +49,7 @@ try {
   if (process.platform !== 'win32') {
     assert.equal(run(join(temp, 'node_modules/.bin/lax-mcp'), ['--version'], temp), '');
   }
+  assert.equal(runNpm(['exec', '--offline', '--', 'lax-mcp', '--version'], temp), '');
   const files = packed.files.map(x => x.path);
   assert.ok(files.includes('dist/cli.js') && files.includes('dist/index.d.ts'));
   assert.ok(files.every(x => !/^(src|test|evidence|submission|node_modules)\//.test(x)));

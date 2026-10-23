@@ -13,7 +13,7 @@ export interface LaxMcpOptions {
   maxResponseBytes?: number;
   allowSubmit?: boolean;
   /** Receives metadata only, never arguments, contacts, addresses, headers or response bodies. */
-  audit?: (event: AuditEvent) => void;
+  audit?: (event: AuditEvent) => void | Promise<void>;
 }
 
 export class RegistryError extends Error {
@@ -103,10 +103,14 @@ export class RegistryClient {
   }
 
   audit(event: AuditEvent): void {
-    try { this.options.audit?.(Object.freeze(event)); } catch { /* Diagnostics cannot break a tool. */ }
+    try {
+      // Async callbacks are assignable to void callbacks in TypeScript. Handle
+      // their rejection too, so diagnostics cannot crash or leak an exception.
+      void Promise.resolve(this.options.audit?.(Object.freeze(event))).catch(() => {});
+    } catch { /* Diagnostics cannot break a tool. */ }
   }
 
-  async request(path: string, query?: Record<string, unknown>, body?: Record<string, unknown>, signal?: AbortSignal): Promise<unknown> {
+  async request(path: string, query?: Record<string, unknown>, body?: Record<string, unknown>, signal?: AbortSignal): Promise<string> {
     const url = new URL(path, this.baseUrl);
     for (const [name, value] of Object.entries(query ?? {})) {
       if (value !== undefined) url.searchParams.set(name, String(value));
@@ -126,7 +130,7 @@ export class RegistryClient {
       if (signal?.aborted) abortListener();
       else signal?.addEventListener('abort', abortListener, { once: true });
     });
-    const operation = async (): Promise<unknown> => {
+    const operation = async (): Promise<string> => {
       if (controller.signal.aborted) throw new RegistryError('Registry request was cancelled.');
       const response = await this.fetchImpl(url.toString(), {
         method: body === undefined ? 'GET' : 'POST',
@@ -140,7 +144,9 @@ export class RegistryClient {
       if (!response.ok) {
         throw new RegistryError(`HTTP ${response.status}: ${errorMessage(text, 'Registry rejected the request.')}`, response.status);
       }
-      try { return JSON.parse(text); }
+      // Validate JSON once, then preserve the bounded wire text. Pretty printing
+      // deeply nested data can amplify a tiny response into megabytes.
+      try { JSON.parse(text); return text; }
       catch { throw new RegistryError(`HTTP ${response.status}: Registry returned invalid JSON.`, response.status); }
     };
     try { return await Promise.race([operation(), interrupted]); }

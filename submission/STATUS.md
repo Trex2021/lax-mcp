@@ -4,6 +4,7 @@ Target job: a14478ee-35f7-4457-843a-482f25af6dad, LAX MCP server.
 Owner: Ehsan Benvari / Trex2021.
 
 - Local implementation: prepared; see recorded verification for results.
+- Security candidate 0.1.1: reviewed and strengthened; 77 local tests pass on Node 20 and 24. See docs/SECURITY-REVIEW.md for measured scope, actual scanner results and limits.
 - Organizer registry availability: intermittent HTTP 503 observed on 23 October 2026.
 - Registered LAX listing: not created; no listing ID is available.
 - Signed bid: not sent.

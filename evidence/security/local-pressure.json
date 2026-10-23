@@ -1,0 +1,21 @@
+{
+  "kind": "controlled-loopback-pressure",
+  "started": "2026-10-23T02:36:06.780Z",
+  "finished": "2026-10-23T02:36:07.188Z",
+  "node": "v24.19.0",
+  "externalNetwork": false,
+  "writes": 0,
+  "fixtureOnly": true,
+  "burstRequests": 200,
+  "workers": 8,
+  "configuredConcurrentLimit": 4,
+  "peakUpstreamConcurrency": 4,
+  "accepted": 58,
+  "busy": 142,
+  "requestResponseMixups": 0,
+  "upstreamCalls": 59,
+  "healthAfterBurst": 200,
+  "recoveryCall": 200,
+  "passed": true,
+  "note": "A bounded local overload check, not a production capacity benchmark or a test of organizer infrastructure."
+}

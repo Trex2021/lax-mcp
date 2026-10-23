@@ -21,7 +21,9 @@ TLS, multi-tenant OAuth, rate limiting or durable session storage. Use a suitabl
 authenticated TLS proxy before any remote exposure. Restrict the proxy's
 allowed hosts and origins explicitly. The health route shows no upstream data.
 
-All optional diagnostics are bounded metadata. Protocol results can contain
+Optional diagnostics contain a fixed set of metadata fields. Synchronous and
+asynchronous callback failures are contained without printing their exception.
+Protocol results can contain
 the registry's public content, including text it returns. Do not capture MCP
 request/response traffic in public logs: submissions themselves contain the
 contact and payout address the caller deliberately supplied.
@@ -30,6 +32,21 @@ Tests cover path boundaries, schema rejection, timeouts, oversized replies,
 error recovery, metadata privacy, HTTP protections and actual transports. They
 are not a guarantee of absence of vulnerabilities. No independent security
 audit is claimed.
+
+Additional bounds: 64 KiB stdio input, 64 KiB decoded HTTP JSON, strict UTF-8,
+16 admitted HTTP MCP requests by default and 64 listener connections. Excess
+requests are refused before parsing. Input completion, parser failures and
+disconnection release admission capacity. The operator can change the request
+limit programmatically. These checks do not supply multi-tenant authorization
+or production DDoS protection. Unknown HTTP origins and malformed Host values
+are refused independently of the optional bearer token.
+
+Registry JSON is validated and returned as its original bounded text. This
+avoids output amplification and deep re-serialization while preserving data.
+Generated package output is rebuilt from a clean directory and checked against
+an exact release-file allowlist. CI includes the behavioral security tests and
+a separate CodeQL security-and-quality workflow. A configured workflow is not
+proof of a completed scan; actual outcomes are recorded in the review report.
 
 Report a concern through the operator's verified GitHub contact. Never include
 keys, payment signatures or personal data in a public issue.
