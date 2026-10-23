@@ -1,0 +1,61 @@
+{
+  "recorded": "2026-10-23T20:02:27.419Z",
+  "kind": "read-only-entry-readiness",
+  "sourceCommit": "1e9231775202920b1b013a75e4579efe463e0d5f",
+  "job": {
+    "id": "a14478ee-35f7-4457-843a-482f25af6dad",
+    "title": "LAX MCP server",
+    "status": "open",
+    "bounty_usdc": 200,
+    "currency": "USDC",
+    "chain": "base",
+    "deadline": "2026-11-09T23:59:00+00:00",
+    "bid_closes": "2026-10-29T20:00:00+00:00"
+  },
+  "proposedBid": {
+    "price_usdc": 180,
+    "delivery_by": "2026-11-05T20:00:00Z",
+    "acceptanceDependentMilestoneAmounts": {
+      "M1": 54,
+      "M2": 126
+    },
+    "submitted": false
+  },
+  "offerDraft": {
+    "schemaValidation": "passed with AJV against current public OpenAPI",
+    "registered": false,
+    "agentDidEstablished": false,
+    "operatorBaseAddressKnown": false
+  },
+  "publishedListingPrice": {
+    "mode": "fixed",
+    "currency": "USD",
+    "amount": "0.01"
+  },
+  "publishedListingRail": [
+    {
+      "x402": {
+        "version": 1,
+        "scheme": "exact",
+        "asset": "USDC",
+        "networks": [
+          "base"
+        ],
+        "facilitator": "https://facilitator.payai.network"
+      }
+    }
+  ],
+  "freshServerQuoteObtained": false,
+  "quotePost": "blocked by automatic approval review; used read-only schema and price metadata instead",
+  "npm": {
+    "authenticated": false,
+    "webLoginInitiated": true,
+    "published": false,
+    "note": "Authentication URLs and credentials are not stored here.",
+    "webLoginStatus": "Not completed; the CLI requested a username. The unauthenticated session was cancelled. A fresh secure login is required when the owner is ready."
+  },
+  "codexDeepCoordinatorAvailable": false,
+  "financialSignatures": 0,
+  "payments": 0,
+  "pactAccepted": false
+}

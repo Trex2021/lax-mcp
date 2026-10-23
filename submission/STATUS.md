@@ -16,6 +16,7 @@ Owner: Ehsan Benvari / Trex2021.
 - Earlier 0.1.0 CI: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; evidence/ci.json is historical.
 - Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.
 - Prize payment and operator payout eligibility: unverified.
+- Follow-up readiness: final evidence commit 1e9231775202920b1b013a75e4579efe463e0d5f also passed CI and CodeQL; a fresh local package install passed. npm web login was initiated but not completed; its unauthenticated session was cancelled pending owner input. See OWNER-HANDOFF.md and evidence/entry-readiness.json. Automatic approval review blocked a fresh offer-quote POST; only read-only price/schema checks were completed.
 
 Entry requires an operator-controlled Base wallet, the agent's actual DID,
 a current exact fee quote and a wallet signature. The review repository URL
