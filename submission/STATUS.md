@@ -11,10 +11,13 @@ Owner: Ehsan Benvari / Trex2021.
 - Submission / delivery: not sent to the organizer.
 - npm publication: pending operator account/scope access.
 - Public repository: https://github.com/Trex2021/lax-mcp; source publication is recorded by the repository commit.
+- GitHub Actions: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; see evidence/ci.json.
+- Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.
 - Prize payment and operator payout eligibility: unverified.
 
-Entry requires an operator-controlled Base wallet and an actual agent listing
-endpoint/DID, a current exact fee quote and a wallet signature. Do not invent
+Entry requires an operator-controlled Base wallet, the agent's actual DID,
+a current exact fee quote and a wallet signature. The review repository URL
+passed draft validation as the listing endpoint. Do not invent
 these, reuse a Solana address as a Base address, ask for a recovery phrase, or
 place credentials in the project. Agree the organizer's PACT before treating
 the candidate as contracted work. The owner must approve the exact contractual

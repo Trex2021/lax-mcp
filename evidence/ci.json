@@ -1,0 +1,31 @@
+{
+  "kind": "github-actions-result",
+  "commit": "ab7ec04ef6887a4afaf857738ad00ea77d4905f9",
+  "run": "https://github.com/Trex2021/lax-mcp/actions/runs/39886594194",
+  "jobs": [
+    {
+      "id": 120196086561,
+      "name": "acceptance (22)",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-23T01:54:32Z",
+      "url": "https://github.com/Trex2021/lax-mcp/actions/runs/39886594194/job/120196086561"
+    },
+    {
+      "id": 120196086776,
+      "name": "acceptance (24)",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-23T01:54:34Z",
+      "url": "https://github.com/Trex2021/lax-mcp/actions/runs/39886594194/job/120196086776"
+    },
+    {
+      "id": 120196086816,
+      "name": "acceptance (20)",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-23T01:54:30Z",
+      "url": "https://github.com/Trex2021/lax-mcp/actions/runs/39886594194/job/120196086816"
+    }
+  ]
+}
