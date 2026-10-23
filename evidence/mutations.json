@@ -1,0 +1,83 @@
+{
+  "kind": "controlled-local-mutation-check",
+  "started": "2026-10-23T01:52:22.651Z",
+  "node": "v24.19.0",
+  "baselinePassed": true,
+  "note": "Five targeted mutants, not an exhaustive mutation score or organizer hidden tests.",
+  "mutants": [
+    {
+      "name": "A2 wrong jobs route",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A2: lax_list_jobs maps arguments to the documented registry call (GET)",
+        "✖ A2: default registry and global fetch are used, with no wallet or payment headers",
+        "✖ A2: lax_list_jobs maps arguments to the documented registry call (GET)",
+        "✖ A2: default registry and global fetch are used, with no wallet or payment headers"
+      ]
+    },
+    {
+      "name": "A2 submission leaks job_id into body",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A2: lax_submit maps arguments to the documented registry call (POST)",
+        "✖ A2: lax_submit maps arguments to the documented registry call (POST)"
+      ]
+    },
+    {
+      "name": "A3 error flag removed",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A3: HTTP 400 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 401 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 403 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 404 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 409 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 429 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 500 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 503 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: plain text errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: JSON string errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: HTML proxy page errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: invalid UTF-8 retains HTTP status and permits a subsequent valid response",
+        "✖ A3: network failure is bounded, does not leak the exception, and permits recovery",
+        "✖ A3: an upstream that ignores abort still times out without hanging the next call",
+        "✖ A4: read-only mode blocks the write while all read tools remain available",
+        "✖ A3: HTTP 400 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 401 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 403 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 404 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 409 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 429 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 500 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: HTTP 503 preserves the registry reason, then a subsequent call succeeds",
+        "✖ A3: plain text errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: JSON string errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: HTML proxy page errors preserve useful reasons and exclude proxy pages",
+        "✖ A3: invalid UTF-8 retains HTTP status and permits a subsequent valid response",
+        "✖ A3: network failure is bounded, does not leak the exception, and permits recovery",
+        "✖ A3: an upstream that ignores abort still times out without hanging the next call",
+        "✖ A4: read-only mode blocks the write while all read tools remain available"
+      ]
+    },
+    {
+      "name": "A4 invalid payout accepted",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A4: bad payout is refused before any registry request",
+        "✖ A4: non-hex payout is refused before any registry request",
+        "✖ A4: bad payout is refused before any registry request",
+        "✖ A4: non-hex payout is refused before any registry request"
+      ]
+    },
+    {
+      "name": "A4 read-only guard removed",
+      "detected": true,
+      "failedAssertions": [
+        "✖ A4: read-only mode blocks the write while all read tools remain available",
+        "✖ A4: read-only mode blocks the write while all read tools remain available"
+      ]
+    }
+  ],
+  "restoredBaselinePassed": true,
+  "finished": "2026-10-23T01:52:25.134Z"
+}

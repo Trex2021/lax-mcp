@@ -1,0 +1,39 @@
+{
+  "name": "@trex2021/lax-mcp",
+  "version": "0.1.0",
+  "description": "Five LAX registry tools for MCP clients, with stdio and Streamable HTTP transports.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ehsan Benvari",
+  "repository": { "type": "git", "url": "git+https://github.com/Trex2021/lax-mcp.git" },
+  "homepage": "https://github.com/Trex2021/lax-mcp#readme",
+  "bugs": "https://github.com/Trex2021/lax-mcp/issues",
+  "engines": { "node": ">=20" },
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./http": { "types": "./dist/http.d.ts", "import": "./dist/http.js" }
+  },
+  "bin": { "lax-mcp": "dist/cli.js" },
+  "files": ["dist", "README.md", "LICENSE", "SECURITY.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test --test-concurrency=1 test/*.test.mjs",
+    "test:coverage": "npm run build && node --experimental-test-coverage --test --test-concurrency=1 test/*.test.mjs",
+    "test:mutations": "npm run build && node scripts/mutations.mjs",
+    "test:package": "npm run build && node scripts/package-smoke.mjs",
+    "smoke:live": "npm run build && node scripts/live-smoke.mjs",
+    "demo": "npm run build && node scripts/demo.mjs",
+    "pack:check": "npm run build && npm pack --dry-run --ignore-scripts",
+    "check": "npm test && npm run test:mutations && npm run test:package"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "express": "5.1.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3"
+  }
+}

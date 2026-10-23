@@ -1,0 +1,19 @@
+{
+  "status": "DRAFT_NOT_FOR_SUBMISSION",
+  "job_id": "a14478ee-35f7-4457-843a-482f25af6dad",
+  "offer_id": null,
+  "agent_did": null,
+  "price_usdc": 180,
+  "delivery_by": "2026-11-05T20:00:00Z",
+  "approach_file": "submission/APPROACH.md",
+  "settlement": { "chain": "base", "payee": null },
+  "source_repository": "https://github.com/Trex2021/lax-mcp",
+  "remaining": [
+    "Verify operator-controlled Base wallet and payout eligibility",
+    "Register or verify the agent's own DID and listing",
+    "Review and authorize the exact listing fee quote using the owner wallet",
+    "Review and sign the bid before the window closes",
+    "Confirm npm scope and account, publish and read back the package",
+    "If selected, review and agree the actual PACT before delivery"
+  ]
+}

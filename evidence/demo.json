@@ -1,0 +1,139 @@
+{
+  "kind": "synthetic-local-fixture",
+  "notLiveData": true,
+  "note": "All contact, payout and DID values are synthetic. No organizer submission, bid, wallet or payment occurred.",
+  "started": "2026-10-23T01:52:25.328Z",
+  "finished": "2026-10-23T01:52:25.651Z",
+  "node": "v24.19.0",
+  "transport": "stdio, actual SDK client and CLI subprocess",
+  "tools": [
+    "lax_search_agents",
+    "lax_get_offer",
+    "lax_list_jobs",
+    "lax_get_job",
+    "lax_submit"
+  ],
+  "calls": [
+    {
+      "tool": "lax_search_agents",
+      "arguments": {
+        "query": "typescript mcp"
+      },
+      "isError": false,
+      "text": "{\n  \"results\": [],\n  \"count\": 0\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_get_offer",
+      "arguments": {
+        "id": "fixture-offer"
+      },
+      "isError": false,
+      "text": "{\n  \"id\": \"fixture-offer\",\n  \"name\": \"Fixture agent\"\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_list_jobs",
+      "arguments": {
+        "limit": 1
+      },
+      "isError": false,
+      "text": "{\n  \"jobs\": [\n    {\n      \"id\": \"fixture-job\",\n      \"title\": \"Fixture job\",\n      \"status\": \"open\"\n    }\n  ],\n  \"count\": 1\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_get_job",
+      "arguments": {
+        "id": "fixture-job"
+      },
+      "isError": false,
+      "text": "{\n  \"id\": \"fixture-job\",\n  \"title\": \"Fixture job\",\n  \"status\": \"open\"\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_submit",
+      "arguments": {
+        "job_id": "test-job",
+        "builder": "Fixture Builder",
+        "contact": "fixture-contact@example.invalid",
+        "repo_or_patch_url": "https://example.invalid/review",
+        "payout_address": "0x1212121212121212121212121212121212121212",
+        "agent_did": "did:web:example.invalid:fixture",
+        "notes": "Synthetic local test. Do not submit to a live organizer."
+      },
+      "isError": false,
+      "text": "{\n  \"ok\": true,\n  \"id\": \"local-submission\"\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_get_job",
+      "arguments": {
+        "id": "unavailable"
+      },
+      "isError": true,
+      "text": "HTTP 503: Fixture maintenance",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_get_job",
+      "arguments": {
+        "id": "fixture-job"
+      },
+      "isError": false,
+      "text": "{\n  \"id\": \"fixture-job\",\n  \"title\": \"Fixture job\",\n  \"status\": \"open\"\n}",
+      "upstreamRequests": 1
+    },
+    {
+      "tool": "lax_get_offer",
+      "arguments": {},
+      "isError": true,
+      "text": "MCP error -32602: Input validation error: Invalid arguments for tool lax_get_offer: Required at id",
+      "upstreamRequests": 0
+    }
+  ],
+  "registryRequests": [
+    {
+      "method": "GET",
+      "url": "/registry/search?query=typescript+mcp",
+      "body": null
+    },
+    {
+      "method": "GET",
+      "url": "/registry/offers/fixture-offer",
+      "body": null
+    },
+    {
+      "method": "GET",
+      "url": "/registry/jobs?limit=1",
+      "body": null
+    },
+    {
+      "method": "GET",
+      "url": "/registry/jobs/fixture-job",
+      "body": null
+    },
+    {
+      "method": "POST",
+      "url": "/registry/jobs/test-job/submissions",
+      "body": {
+        "builder": "Fixture Builder",
+        "contact": "fixture-contact@example.invalid",
+        "repo_or_patch_url": "https://example.invalid/review",
+        "payout_address": "0x1212121212121212121212121212121212121212",
+        "agent_did": "did:web:example.invalid:fixture",
+        "notes": "Synthetic local test. Do not submit to a live organizer."
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/registry/jobs/unavailable",
+      "body": null
+    },
+    {
+      "method": "GET",
+      "url": "/registry/jobs/fixture-job",
+      "body": null
+    }
+  ],
+  "passed": true
+}

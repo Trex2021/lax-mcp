@@ -1,0 +1,91 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @trex2021/lax-mcp@0.1.0 test:coverage
+> npm run build && node --experimental-test-coverage --test --test-concurrency=1 test/*.test.mjs
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @trex2021/lax-mcp@0.1.0 build
+> tsc -p tsconfig.json
+
+✔ A1: factory returns an unconnected SDK server and performs no I/O (7.493506ms)
+✔ A1: real SDK client discovers exactly five described tools and schemas (15.745625ms)
+✔ A2: lax_search_agents maps arguments to the documented registry call (GET) (10.654299ms)
+✔ A2: lax_search_agents maps arguments to the documented registry call (GET) (2.749895ms)
+✔ A2: lax_get_offer maps arguments to the documented registry call (GET) (2.524285ms)
+✔ A2: lax_list_jobs maps arguments to the documented registry call (GET) (2.491816ms)
+✔ A2: lax_get_job maps arguments to the documented registry call (GET) (4.936983ms)
+✔ A2: lax_submit maps arguments to the documented registry call (POST) (1.889992ms)
+✔ A2: default registry and global fetch are used, with no wallet or payment headers (1.930803ms)
+✔ A3: HTTP 400 preserves the registry reason, then a subsequent call succeeds (5.456274ms)
+✔ A3: HTTP 401 preserves the registry reason, then a subsequent call succeeds (2.509633ms)
+✔ A3: HTTP 403 preserves the registry reason, then a subsequent call succeeds (1.48293ms)
+✔ A3: HTTP 404 preserves the registry reason, then a subsequent call succeeds (1.389159ms)
+✔ A3: HTTP 409 preserves the registry reason, then a subsequent call succeeds (1.72303ms)
+✔ A3: HTTP 429 preserves the registry reason, then a subsequent call succeeds (1.917443ms)
+✔ A3: HTTP 500 preserves the registry reason, then a subsequent call succeeds (1.74945ms)
+✔ A3: HTTP 503 preserves the registry reason, then a subsequent call succeeds (1.413535ms)
+✔ A3: nested registry error messages are retained (1.531062ms)
+✔ A3: plain text errors preserve useful reasons and exclude proxy pages (1.800838ms)
+✔ A3: JSON string errors preserve useful reasons and exclude proxy pages (1.122527ms)
+✔ A3: HTML proxy page errors preserve useful reasons and exclude proxy pages (1.45621ms)
+✔ A3: invalid UTF-8 retains HTTP status and permits a subsequent valid response (1.82175ms)
+✔ A3: network failure is bounded, does not leak the exception, and permits recovery (1.534848ms)
+✔ A3: an upstream that ignores abort still times out without hanging the next call (17.356136ms)
+✔ A3: invalid JSON and oversized responses are errors with a usable next call (2.671807ms)
+✔ A4: missing offer id is refused before any registry request (1.706937ms)
+✔ A4: empty id is refused before any registry request (1.449529ms)
+✔ A4: path traversal is refused before any registry request (1.725504ms)
+✔ A4: dot path is refused before any registry request (1.634528ms)
+✔ A4: long query is refused before any registry request (1.297862ms)
+✔ A4: fractional limit is refused before any registry request (1.173604ms)
+✔ A4: large limit is refused before any registry request (1.581798ms)
+✔ A4: negative offset is refused before any registry request (1.123258ms)
+✔ A4: unknown track is refused before any registry request (1.571373ms)
+✔ A4: unexpected field is refused before any registry request (1.236399ms)
+✔ A4: bad payout is refused before any registry request (1.35011ms)
+✔ A4: non-hex payout is refused before any registry request (1.37686ms)
+✔ A4: http link is refused before any registry request (1.23672ms)
+✔ A4: URL credentials is refused before any registry request (1.202698ms)
+✔ A4: missing DID is refused before any registry request (1.338313ms)
+✔ A4: invalid DID is refused before any registry request (1.411502ms)
+✔ A4: empty contact is refused before any registry request (1.402068ms)
+✔ A4: multiline contact is refused before any registry request (1.212182ms)
+✔ A4: long notes is refused before any registry request (1.06428ms)
+✔ A4: reserved characters in an identifier cannot become route structure (1.44963ms)
+✔ A5: optional diagnostics disclose metadata only, even on a failed submission (4.644853ms)
+✔ A5: an audit callback cannot crash a successful registry call (1.397812ms)
+✔ A4: read-only mode blocks the write while all read tools remain available (1.46345ms)
+✔ A3: aborted calls issue no upstream request (0.772591ms)
+✔ A3: oversized content-length is refused before reading its body (0.478569ms)
+✔ A4: unsafe configuration fails at construction (0.39271ms)
+✔ A7: README documents both transports, client config, all tools, and publication status (7.028447ms)
+✔ A6: real SDK stdio client initializes, lists, reads and closes the packaged CLI (341.999999ms)
+✔ A5: every stdout line is MCP JSON and private submission inputs are absent from logs (286.931612ms)
+✔ A6: real SDK Streamable HTTP client can use all five tools (109.045309ms)
+✔ A6: HTTP enforces origin, host, media type, method and body size limits (27.02663ms)
+✔ A6: HTTP bearer authentication protects both protocol and health endpoints (28.587818ms)
+✔ A6: CLI help and invalid flags never produce non-protocol stdout (1518.549472ms)
+✔ A6: CLI accepts PORT and reports its actual loopback HTTP endpoint on stderr (285.175524ms)
+ℹ tests 59
+ℹ suites 0
+ℹ pass 59
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3368.411747
+ℹ start of coverage report
+ℹ -------------------------------------------------------------
+ℹ file         | line % | branch % | funcs % | uncovered lines
+ℹ -------------------------------------------------------------
+ℹ dist         |        |          |         | 
+ℹ  cli.js      | 100.00 |    80.00 |  100.00 | 
+ℹ  http.js     |  90.91 |    84.62 |  100.00 | 26-28 61-65
+ℹ  index.js    | 100.00 |   100.00 |  100.00 | 
+ℹ  registry.js |  99.41 |    96.47 |  100.00 | 27
+ℹ  schemas.js  |  95.45 |    91.67 |  100.00 | 15-16
+ℹ -------------------------------------------------------------
+ℹ all files    |  97.51 |    92.44 |  100.00 | 
+ℹ -------------------------------------------------------------
+ℹ end of coverage report

@@ -1,0 +1,91 @@
+{
+  "kind": "live-public-reads",
+  "started": "2026-10-23T01:42:22.800Z",
+  "baseUrl": "https://lax.kognai.ai/registry",
+  "noWrites": true,
+  "node": "v24.19.0",
+  "calls": [
+    {
+      "tool": "lax_list_jobs",
+      "arguments": {
+        "track": "godman-protocols",
+        "limit": 3
+      },
+      "isError": false,
+      "durationMs": 4020,
+      "responseShape": [
+        "jobs",
+        "count"
+      ]
+    },
+    {
+      "tool": "lax_get_job",
+      "arguments": {
+        "id": "a14478ee-35f7-4457-843a-482f25af6dad"
+      },
+      "isError": false,
+      "durationMs": 630,
+      "responseShape": [
+        "job"
+      ],
+      "job": {
+        "id": "a14478ee-35f7-4457-843a-482f25af6dad",
+        "title": "LAX MCP server",
+        "status": "open"
+      }
+    },
+    {
+      "tool": "lax_search_agents",
+      "arguments": {},
+      "isError": false,
+      "durationMs": 842,
+      "responseShape": [
+        "results",
+        "count"
+      ]
+    },
+    {
+      "tool": "lax_get_offer",
+      "arguments": {
+        "id": "svc-voxight"
+      },
+      "isError": false,
+      "durationMs": 725,
+      "responseShape": [
+        "offer"
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://lax.kognai.ai/registry/jobs?track=godman-protocols&limit=3",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "https://lax.kognai.ai/registry/jobs/a14478ee-35f7-4457-843a-482f25af6dad",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "https://lax.kognai.ai/registry/search",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "https://lax.kognai.ai/registry/offers/svc-voxight",
+      "status": 200
+    }
+  ],
+  "tools": [
+    "lax_search_agents",
+    "lax_get_offer",
+    "lax_list_jobs",
+    "lax_get_job",
+    "lax_submit"
+  ],
+  "finished": "2026-10-23T01:42:29.030Z",
+  "successfulCalls": 4,
+  "failedCalls": 0
+}
