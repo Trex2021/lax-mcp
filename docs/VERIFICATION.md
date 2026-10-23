@@ -15,9 +15,13 @@ not organizer acceptance. Test names A1 to A7 map to the job specification.
 | Synthetic stdio demonstration | Five tools, recovery and pre-I/O refusal passed | [record](../evidence/demo.json) |
 | Live public reads | 4 successes, HTTP 200, 0 writes | [record](../evidence/live-smoke.json) |
 | Unpaid listing validation | HTTP 402: offer valid, 0.01 USDC required | [record](../evidence/listing-quote.json) |
+| GitHub CI, main | 77 tests, demo, pressure and package checks passed in all five environments; eight mutations detected on Linux 24 | [record](../evidence/security/ci.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019642) |
+| CodeQL, main | security-and-quality completed; inspected SARIF has 0 results and all production files extracted | [record](../evidence/security/codeql.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019651) |
 
-Current GitHub cross-platform and CodeQL outcomes will be recorded after the
-corresponding runs complete. A6 still requires npm publication and readback.
+The current main-branch runs verified implementation merge
+5effbceeac280610adf00e35ef5f5cb277c3d3a5. The matrix covered Linux Node 20,
+22 and 24, Windows Node 24 and macOS Node 24. A6 still requires npm publication
+and readback.
 
 The production and dev dependency audit returned zero known advisories at check time.
 This is a point-in-time advisory lookup, not a security guarantee. Dependencies

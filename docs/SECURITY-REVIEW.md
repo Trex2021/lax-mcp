@@ -1,7 +1,8 @@
 # Security and reliability review, 23 October 2026
 
 Candidate: 0.1.1. Original source: 0be67f9b4f779ceb2c4821d96a4e08826b2a948e.
-Status: local checks complete; GitHub cross-platform and CodeQL results pending.
+Reviewed implementation merged in 5effbceeac280610adf00e35ef5f5cb277c3d3a5.
+Status: local checks, five GitHub CI environments and main-branch CodeQL passed.
 
 This is a source review, controlled local adversarial testing and automated
 analysis. It is not an independent penetration-test certification. No attack,
@@ -51,7 +52,8 @@ a finding.
 | Gitleaks, current first-party files | 0 detections, redacted output enabled | [current tree](../evidence/security/gitleaks-current.json) |
 | Semgrep CE | 0 reported findings and parse errors for configured packs | [result](../evidence/security/semgrep.json), [scope](../evidence/security/semgrep.txt) |
 | Clean tarball install | Factory, HTTP export, SDK client and executable passed | [package](../evidence/package.json) |
-| GitHub Actions and CodeQL | Configured, run outcome pending | Recorded only after actual execution |
+| GitHub Actions, main | 77 tests passed in each of five environments; demo, local pressure and clean package checks passed; eight mutations detected on Linux 24 | [CI record](../evidence/security/ci.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019642) |
+| CodeQL 2.27.3, main | security-and-quality: 0 reported results; successful extraction of all five production files; no diagnostic warnings or errors | [inspected SARIF summary](../evidence/security/codeql.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019651) |
 
 Semgrep uses p/javascript, p/typescript and p/github-actions with metrics off.
 First-party TS, MJS and workflow YAML are included. Generated output,
@@ -59,6 +61,15 @@ node_modules, evidence and archives are excluded from static analysis; package
 output is checked separately. [Tool provenance](../evidence/security/tooling.json)
 records versions and scope. Rules and advisory databases may change. Zero
 results describe these checks at this time and do not prove absence of defects.
+The main CI matrix covered Ubuntu with Node 20.20.2, 22.23.3 and 24.21.0,
+plus Windows and macOS with Node 24.22.1. Test totals were read from each job's
+log. The actual CodeQL artifact was downloaded, its archive digest verified,
+and its SARIF inspected. Its summary records the archive and SARIF hashes,
+extracted paths and artifact expiry. The earlier PR scan used diff-informed
+analysis; the reported main scan did not contain that PR filter.
+[Source hashes](../evidence/security/source-inventory.json) identify the
+reviewed runtime, tests, scripts, configuration and workflows. Later evidence
+and documentation updates do not change those files.
 
 ## Limits and outstanding gates
 

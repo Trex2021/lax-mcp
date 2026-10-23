@@ -5,6 +5,7 @@ Owner: Ehsan Benvari / Trex2021.
 
 - Local implementation: prepared; see recorded verification for results.
 - Security candidate 0.1.1: reviewed and strengthened; 77 local tests pass on Node 20 and 24. See docs/SECURITY-REVIEW.md for measured scope, actual scanner results and limits.
+- Security implementation merged: 5effbceeac280610adf00e35ef5f5cb277c3d3a5. Main CI passed all 77 tests, demo, local pressure and package checks on Linux Node 20/22/24, Windows 24 and macOS 24. Main CodeQL passed with zero results in the inspected SARIF. See evidence/security/ci.json and evidence/security/codeql.json.
 - Organizer registry availability: intermittent HTTP 503 observed on 23 October 2026.
 - Registered LAX listing: not created; no listing ID is available.
 - Signed bid: not sent.
@@ -12,7 +13,7 @@ Owner: Ehsan Benvari / Trex2021.
 - Submission / delivery: not sent to the organizer.
 - npm publication: pending operator account/scope access.
 - Public repository: https://github.com/Trex2021/lax-mcp; source publication is recorded by the repository commit.
-- GitHub Actions: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; see evidence/ci.json.
+- Earlier 0.1.0 CI: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; evidence/ci.json is historical.
 - Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.
 - Prize payment and operator payout eligibility: unverified.
 

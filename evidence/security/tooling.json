@@ -43,7 +43,13 @@
     "reason": "Required Codex Security coordinator tool is unavailable in this session."
   },
   "codeql": {
-    "status": "configured; awaiting GitHub execution"
+    "status": "main-branch execution and inspected SARIF passed",
+    "version": "2.27.3",
+    "suite": "security-and-quality",
+    "results": 0,
+    "sourceCommit": "5effbceeac280610adf00e35ef5f5cb277c3d3a5",
+    "run": "https://github.com/Trex2021/lax-mcp/actions/runs/40014019651",
+    "evidence": "evidence/security/codeql.json"
   },
   "cleanBuildRemovedSyntheticSentinel": true,
   "packageFileAllowlistCount": 19,

@@ -1,0 +1,320 @@
+{
+  "kind": "published-source-ci",
+  "sourceCommit": "5effbceeac280610adf00e35ef5f5cb277c3d3a5",
+  "sourceTree": "d58c335a5b5212af062a78dade95e10f92a2ef16",
+  "runUrl": "https://github.com/Trex2021/lax-mcp/actions/runs/40014019642",
+  "event": "push",
+  "branch": "main",
+  "result": "success",
+  "jobs": [
+    {
+      "id": 120621326643,
+      "name": "acceptance (ubuntu-latest, 20)",
+      "node": "v20.20.2",
+      "tests": 77,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 77,
+      "failed": 0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pressure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutations",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run npm run test:package",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 120621326997,
+      "name": "acceptance (ubuntu-latest, 24)",
+      "node": "v24.21.0",
+      "tests": 77,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 77,
+      "failed": 0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pressure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutations",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:package",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 120621327126,
+      "name": "acceptance (windows-latest, 24)",
+      "node": "v24.22.1",
+      "tests": 77,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 77,
+      "failed": 0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pressure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutations",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run npm run test:package",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 120621327180,
+      "name": "acceptance (ubuntu-latest, 22)",
+      "node": "v22.23.3",
+      "tests": 77,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 77,
+      "failed": 0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pressure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutations",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run npm run test:package",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 120621327201,
+      "name": "acceptance (macos-latest, 24)",
+      "node": "v24.22.1",
+      "tests": 77,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 77,
+      "failed": 0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pressure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutations",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run npm run test:package",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "prVerification": {
+    "url": "https://github.com/Trex2021/lax-mcp/pull/1",
+    "sourceCommit": "0d3ef59749b96e6a2653402e29458cf18ac4f65c",
+    "ciRunUrl": "https://github.com/Trex2021/lax-mcp/actions/runs/40013645446",
+    "codeqlRunUrl": "https://github.com/Trex2021/lax-mcp/actions/runs/40013645545",
+    "result": "success"
+  },
+  "externalOrganizerWrites": 0,
+  "npmPublished": false
+}
