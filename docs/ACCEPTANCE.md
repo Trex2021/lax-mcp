@@ -7,7 +7,7 @@
 | A3 | HTTP, network, JSON, size and timeout errors; next call succeeds | Fault injection and recovery checks |
 | A4 | Invalid IDs, links, addresses and pagination rejected before I/O | Invalid input corpus with zero-request assertions |
 | A5 | No private arguments in diagnostics; stdout contains protocol only | Captured subprocess stdout/stderr and metadata audit checks |
-| A6 | stdio and Streamable HTTP, package bin | Actual SDK clients and CLI subprocess; tarball check. npm rejected publication pending owner publishing authentication with 2FA |
+| A6 | stdio and Streamable HTTP, published npm package and bin | Actual SDK clients and CLI subprocess; anonymous registry readback and exact archive match; fresh public-registry install with both transports, exports and installed bin passed |
 | A7 | Client config, all tools with examples, setup and limits | README content checks and manual review |
 
 The submission API is not the signed competition entry flow. No test against a
@@ -16,4 +16,6 @@ Test totals and dates are recorded by the verification run rather than guessed
 in this document. No claim about hidden organizer tests is made.
 
 Recorded outcomes: [verification](VERIFICATION.md). Bid draft:
-[approach](../submission/APPROACH.md). Publication is an outstanding part of A6.
+[approach](../submission/APPROACH.md). The candidate's A6 implementation and
+publication checks are complete; see [registry evidence](../evidence/publication/published.json).
+Organizer acceptance remains a separate decision.

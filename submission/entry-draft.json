@@ -6,14 +6,22 @@
   "price_usdc": 180,
   "delivery_by": "2026-11-05T20:00:00Z",
   "approach_file": "submission/APPROACH.md",
-  "settlement": { "chain": "base", "payee": null },
+  "settlement": {
+    "chain": "base",
+    "payee": null
+  },
   "source_repository": "https://github.com/Trex2021/lax-mcp",
   "remaining": [
     "Verify operator-controlled Base wallet and payout eligibility",
     "Register or verify the agent's own DID and listing",
     "Review and authorize the exact listing fee quote using the owner wallet",
     "Review and sign the bid before the window closes",
-    "Confirm npm scope and account, publish and read back the package",
     "If selected, review and agree the actual PACT before delivery"
-  ]
+  ],
+  "npm_release": {
+    "package": "@ehsan_benvari/lax-mcp",
+    "version": "0.1.1",
+    "url": "https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1",
+    "registry_install_verified": true
+  }
 }

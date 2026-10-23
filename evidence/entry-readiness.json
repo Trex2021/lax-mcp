@@ -1,6 +1,6 @@
 {
   "recorded": "2026-10-23T21:42:46.425555+00:00",
-  "kind": "read-only-entry-readiness",
+  "kind": "entry-readiness-with-published-release-verification",
   "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
   "job": {
     "id": "a14478ee-35f7-4457-843a-482f25af6dad",
@@ -52,14 +52,21 @@
     "username": "ehsan_benvari",
     "package": "@ehsan_benvari/lax-mcp",
     "version": "0.1.1",
-    "published": false,
+    "published": true,
     "webLoginStatus": "Completed and verified with npm whoami.",
-    "publicationStatus": "npm rejected the publish request with E403, requiring publishing authentication with 2FA.",
-    "evidence": "evidence/publication/attempt.json",
-    "note": "No authentication URL, token or credential is stored here."
+    "publicationStatus": "Published after owner confirmation of the npm publication challenge. Anonymous readback and a fresh public-registry installation passed.",
+    "evidence": "evidence/publication/published.json",
+    "note": "No authentication URL, token or credential is stored here.",
+    "publicationVerifiedAt": "2026-10-23T21:53:30.944Z",
+    "registryInstallVerified": true,
+    "exactMatchToTestedArchive": true,
+    "url": "https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1",
+    "earlierAttemptEvidence": "evidence/publication/attempt.json"
   },
   "codexDeepCoordinatorAvailable": false,
   "financialSignatures": 0,
   "payments": 0,
-  "pactAccepted": false
+  "pactAccepted": false,
+  "updated": "2026-10-23T21:58:25.702611+00:00",
+  "organizerMetadataNote": "Job, schema and price are earlier read-only snapshots; no new organizer request was made during npm publication."
 }

@@ -1,7 +1,12 @@
 # Finish the entry
 
-The implementation and evidence are public. Registration and publishing are
-unfinished. These steps do not happen automatically when the tests pass.
+The implementation and evidence are public. npm publication is complete:
+[@ehsan_benvari/lax-mcp@0.1.1](https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1)
+was downloaded anonymously, matched to the tested archive and installed in a
+fresh directory and cache. Both MCP transports, exports and the installed bin
+passed; see [publication evidence](../evidence/publication/published.json).
+Competition registration remains unfinished. The following steps require the
+owner's verified identity and review of the exact terms.
 
 1. The operator designates a controlled Base wallet to own the listing and
    receive USDC. Confirm the public address and payout eligibility. Establish
@@ -23,16 +28,7 @@ unfinished. These steps do not happen automatically when the tests pass.
    using EIP-191. Submit once to /registry/jobs/<id>/bids with x-lax-time and
    x-lax-signature, before 29 October 2026 at 20:00 UTC. Record the returned
    bid ID/status. No accepted bid is claimed by this repository.
-6. npm web login is verified as ehsan_benvari; the prepared package is now
-   @ehsan_benvari/lax-mcp@0.1.1. Its local and cross-platform checks passed.
-   npm rejected publication with E403 requiring publishing authentication with
-   2FA. The owner must complete that requirement on npm, then authenticate again
-   if needed. Publish the exact tested archive with public access. Independently
-   read back its version and integrity, install it in a fresh directory and
-   exercise the installed exports and bin. No successful publication or registry
-   install is claimed yet. Do not put a password, OTP, token or recovery code
-   into source or chat.
-7. If selected, read the actual PACT and review its price, deadlines, payee,
+6. If selected, read the actual PACT and review its price, deadlines, payee,
    milestones and obligations before agreeing. Deliver M1 and M2 through the
    signed delivery API with their exact full repository commits. The product
    tool lax_submit is not a replacement for this competition workflow.

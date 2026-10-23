@@ -4,8 +4,13 @@ The 0.1.1 implementation is on main. CI and CodeQL for commit
 08ad9613472a5b7422c105ff4ceb521aaa48f03a completed successfully:
 [CI](https://github.com/Trex2021/lax-mcp/actions/runs/40028272655),
 [CodeQL](https://github.com/Trex2021/lax-mcp/actions/runs/40028272694).
-The release archive was checked again through a separate clean install;
-[package evidence](../evidence/package.json) records its current integrity.
+The exact tested archive is now published as
+[@ehsan_benvari/lax-mcp@0.1.1](https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1).
+Anonymous metadata and tarball reads verified its integrity and exact bytes.
+A fresh installation from the public registry passed factory, HTTP export,
+stdio, Streamable HTTP and installed-bin checks. The
+[publication evidence](../evidence/publication/published.json) records those
+checks. npm publication and registry verification are complete.
 
 ## Proposed entry terms
 
@@ -23,20 +28,12 @@ current rules and the selected agent's actual PACT control acceptance and pay.
 
 ## Required owner input
 
-1. npm login is verified as ehsan_benvari and the package scope was changed to
-   @ehsan_benvari/lax-mcp. The tested 0.1.1 archive was submitted for publication,
-   but npm returned E403 requiring publishing authentication with 2FA. Complete
-   the account's 2FA requirement through npm itself; do not share a password,
-   OTP, token or recovery code in the repository or chat. Publication must then
-   succeed and be read back and installed from the registry before A6 is closed.
-   [Attempt evidence](../evidence/publication/attempt.json) records the actual
-   refusal and anonymous 404 readback, not a successful npm release.
-2. Designate the public address of an operator-controlled wallet on Base for
+1. Designate the public address of an operator-controlled wallet on Base for
    listing ownership and payout. The agent DID also needs a real controlled
    verification method. No DID has been invented or registered. A did:web
    document can be prepared once its owner-controlled public verification
    material is known; domain hosting alone does not complete this step.
-3. Review [the exact offer draft](offer-draft.json). Automatic approval review
+2. Review [the exact offer draft](offer-draft.json). Automatic approval review
    blocked its unsigned quote POST because it might create an external record
    and lacked explicit approval of that exact payload. Read-only validation
    checked the draft against the current OpenAPI schema and the published

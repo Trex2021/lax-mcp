@@ -1,0 +1,48 @@
+{
+  "kind": "published-npm-registry-readback-and-clean-install",
+  "started": "2026-10-23T21:53:06.069Z",
+  "finished": "2026-10-23T21:53:30.944Z",
+  "node": "v24.19.0",
+  "package": "@ehsan_benvari/lax-mcp",
+  "version": "0.1.1",
+  "published": true,
+  "npmPage": "https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1",
+  "metadataUrl": "https://registry.npmjs.org/@ehsan_benvari%2flax-mcp/0.1.1",
+  "metadataReadAttempts": [
+    {
+      "time": "2026-10-23T21:53:10.039Z",
+      "status": 200
+    }
+  ],
+  "anonymousMetadataRead": true,
+  "anonymousTarballDownload": true,
+  "tarball": "https://registry.npmjs.org/@ehsan_benvari/lax-mcp/-/lax-mcp-0.1.1.tgz",
+  "integrity": "sha512-JltJAr9cKxzXkQTo1QawNz/cMl9l2zrvALWrosw/pQJodfC5OnwwKaBTK1q/7zim4bdU3vYNtKBa/xfAmN07rg==",
+  "shasum": "2b62af5afb1a9dc005bb96beccbbf95841b56c2f",
+  "downloadedBytes": 20130,
+  "exactMatchToTestedArchive": true,
+  "install": {
+    "source": "public npm registry by exact name and version",
+    "freshDirectory": true,
+    "freshCache": true,
+    "emptyUserConfig": true,
+    "ignoreScripts": true
+  },
+  "checks": {
+    "factory": true,
+    "httpExport": true,
+    "stdioSdkClient": true,
+    "httpSdkClient": true,
+    "tools": 5,
+    "fixtureOnly": true,
+    "organizerWrites": 0,
+    "installedBinViaOfflineNpmExec": true
+  },
+  "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+  "priorEvidenceCommit": "846a6396e9cf8bd7729f0160d1c1c16ccb2e048b",
+  "competitionListing": false,
+  "signedBid": false,
+  "pactAccepted": false,
+  "payments": 0,
+  "passed": true
+}

@@ -12,7 +12,7 @@ Owner: Ehsan Benvari / Trex2021.
 - Accepted selection / PACT: not received or agreed.
 - Submission / delivery: not sent to the organizer.
 - npm account: web login completed; npm whoami verified ehsan_benvari. The controlled package target is @ehsan_benvari/lax-mcp@0.1.1.
-- npm publication: attempted from the verified 19-file release archive, but npm returned E403 requiring publishing authentication with 2FA. Anonymous version readback returned 404. Publication and registry installation are not complete; see evidence/publication/attempt.json.
+- npm publication: @ehsan_benvari/lax-mcp@0.1.1 is public at https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1. Anonymous metadata and tarball reads succeeded. The downloaded archive exactly matches the verified 19-file release archive. A fresh public-registry installation passed factory, HTTP export, both MCP transports and installed-bin checks; see evidence/publication/published.json. The earlier E403 refusal remains historical in evidence/publication/attempt.json.
 - Public repository: https://github.com/Trex2021/lax-mcp; source publication is recorded by the repository commit.
 - Earlier 0.1.0 CI: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; evidence/ci.json is historical.
 - Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.

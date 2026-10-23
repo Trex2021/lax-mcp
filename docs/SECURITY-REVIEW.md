@@ -80,13 +80,16 @@ The Codex Security deep-scan coordinator is unavailable in this session. That
 specific scan was not run; no canonical Codex Security report or invented
 token/coverage measurements are claimed. No hosted reverse proxy, production
 traffic capacity, actual Claude Desktop UI session, organizer hidden tests,
-third-party penetration test or npm publication is certified by these results.
+third-party penetration test is certified by these results.
 Authentication, approval and review of untrusted text remain necessary at the
 client and deployment boundaries. Local tests cannot establish zero bugs.
 
-Listing, wallet authorization, bid, PACT and npm publication remain separate
-gates in [entry status](../submission/STATUS.md). No ranking or payment guarantee
-follows from this review.
+The later npm publication was verified separately through anonymous registry
+readback, exact archive matching and a fresh registry installation; see
+[publication evidence](../evidence/publication/published.json).
+Listing, wallet authorization, bid and PACT remain separate gates in
+[entry status](../submission/STATUS.md). No ranking or payment guarantee follows
+from this review.
 
 Primary guidance: [MCP transports](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports),
 [MCP security](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices),
