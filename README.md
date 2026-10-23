@@ -1,16 +1,23 @@
 # LAX MCP server
 
 Five LAX registry tools for any compatible MCP client. Built for the Kognessium
-LAX MCP server job, operated by Ehsan Benvari. AI implementation: Codex.
+LAX MCP server job, operated by Ehsan Benvari.
 
-**Release status: source candidate, not yet published to npm.** The package name
-`@trex2021/lax-mcp` is proposed; ownership of that npm scope has not been verified.
+**npm package:** `@ehsan_benvari/lax-mcp`, under the operator's npm account.
+Release status and registry verification are recorded in
+[entry status](https://github.com/Trex2021/lax-mcp/blob/main/submission/STATUS.md).
 No claim of contest registration, bid acceptance, PACT agreement or prize payment
-is made by this repository. See [entry status](submission/STATUS.md).
+is made by this repository.
 
 ## Start in under 15 minutes
 
-Node 20 or newer and npm are required. From a clean source checkout:
+Node 20 or newer and npm are required. For a published registry release:
+
+```sh
+npx --yes @ehsan_benvari/lax-mcp@0.1.1 --read-only
+```
+
+From a clean source checkout:
 
 ```sh
 npm ci --ignore-scripts
@@ -24,6 +31,19 @@ The stdio input buffer is limited to 64 KiB. Exceeding the limit
 closes the input transport and exits without printing the input contents.
 
 ## Claude Desktop configuration
+
+For the npm release:
+
+```json
+{
+  "mcpServers": {
+    "lax": {
+      "command": "npx",
+      "args": ["--yes", "@ehsan_benvari/lax-mcp@0.1.1", "--read-only"]
+    }
+  }
+}
+```
 
 Build the checkout first, then set the absolute path appropriate to your machine:
 
@@ -61,7 +81,7 @@ and source control. For an actual remote deployment, put a TLS/authentication
 proxy in front of loopback and explicitly configure its hosts and origins in
 `createLaxHttpApp`; the CLI deliberately provides no unauthenticated public bind.
 
-The package subpath `@trex2021/lax-mcp/http` exports `createLaxHttpApp` and
+The package subpath `@ehsan_benvari/lax-mcp/http` exports `createLaxHttpApp` and
 `startLaxHttpServer`. Optional `allowedHosts`, `allowedOrigins` and `token` apply
 to both `/mcp` and `/health`. UTF-8 JSON requests are limited to 64 KiB after
 decompression. Invalid UTF-8 and other character encodings are refused before
@@ -226,15 +246,15 @@ participation remain separate gates.
 npm run build
 npm run check
 npm pack --ignore-scripts
-# Once the operator confirms a controlled npm scope and account:
+# From the authenticated operator account, after the checks pass:
 npm publish --access public --ignore-scripts
 ```
 
 The tarball contains compiled JS/declarations, README, LICENSE and SECURITY.md.
 It excludes tests, contest records and credentials. There is no install script.
 Publication requires the operator's npm credentials/2FA and verified scope
-ownership. Until a successful registry readback, `npx @trex2021/lax-mcp` is not
-an advertised installation path.
+ownership. A release is recorded as complete only after reading back its exact
+version and integrity from the registry and installing it in a fresh directory.
 
 ## Provenance
 

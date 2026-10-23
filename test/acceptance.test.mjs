@@ -227,5 +227,7 @@ test('A4: unsafe configuration fails at construction', () => {
 test('A7: README documents both transports, client config, all tools, and publication status', async () => {
   const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
   for (const name of TOOL_NAMES) assert.ok(readme.includes(name));
-  for (const required of ['mcpServers', 'stdio', 'Streamable HTTP', 'npm publish', 'not yet published']) assert.ok(readme.includes(required), required);
+  for (const required of ['mcpServers', 'stdio', 'Streamable HTTP', 'npm publish', 'submission/STATUS.md']) assert.ok(readme.includes(required), required);
+  const manifest = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+  assert.ok(readme.includes(manifest.name), 'README must use the actual npm package name.');
 });

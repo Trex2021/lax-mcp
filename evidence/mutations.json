@@ -1,6 +1,6 @@
 {
   "kind": "controlled-local-mutation-check",
-  "started": "2026-10-23T02:35:53.347Z",
+  "started": "2026-10-23T21:34:18.013Z",
   "node": "v24.19.0",
   "baselinePassed": true,
   "note": "Eight targeted mutants, not an exhaustive mutation score or organizer hidden tests.",
@@ -115,5 +115,5 @@
     }
   ],
   "restoredBaselinePassed": true,
-  "finished": "2026-10-23T02:36:06.544Z"
+  "finished": "2026-10-23T21:34:29.459Z"
 }
