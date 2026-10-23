@@ -67,9 +67,12 @@ log. The actual CodeQL artifact was downloaded, its archive digest verified,
 and its SARIF inspected. Its summary records the archive and SARIF hashes,
 extracted paths and artifact expiry. The earlier PR scan used diff-informed
 analysis; the reported main scan did not contain that PR filter.
-[Source hashes](../evidence/security/source-inventory.json) identify the
-reviewed runtime, tests, scripts, configuration and workflows. Later evidence
-and documentation updates do not change those files.
+[Source hashes](../evidence/security/source-inventory.json) identify the original
+reviewed runtime, tests, scripts, configuration and workflows. The later npm
+scope update changed package naming, the package smoke-check imports and the
+README assertion. Production TypeScript and locked dependency versions are
+unchanged. [Release hashes](../evidence/publication/source-inventory.json) and
+[release CI](../evidence/publication/ci.json) identify and verify that candidate.
 
 ## Limits and outstanding gates
 

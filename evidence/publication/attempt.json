@@ -1,0 +1,63 @@
+{
+  "recorded": "2026-10-23T21:41:37.565Z",
+  "kind": "authenticated-publication-attempt",
+  "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+  "sourcePullRequest": "https://github.com/Trex2021/lax-mcp/pull/2",
+  "authenticatedNpmAccount": "ehsan_benvari",
+  "package": "@ehsan_benvari/lax-mcp",
+  "version": "0.1.1",
+  "archive": {
+    "filename": "ehsan_benvari-lax-mcp-0.1.1.tgz",
+    "integrity": "sha512-JltJAr9cKxzXkQTo1QawNz/cMl9l2zrvALWrosw/pQJodfC5OnwwKaBTK1q/7zim4bdU3vYNtKBa/xfAmN07rg==",
+    "shasum": "2b62af5afb1a9dc005bb96beccbbf95841b56c2f",
+    "size": 20130,
+    "files": [
+      "LICENSE",
+      "README.md",
+      "SECURITY.md",
+      "dist/cli.d.ts",
+      "dist/cli.js",
+      "dist/cli.js.map",
+      "dist/http.d.ts",
+      "dist/http.js",
+      "dist/http.js.map",
+      "dist/index.d.ts",
+      "dist/index.js",
+      "dist/index.js.map",
+      "dist/registry.d.ts",
+      "dist/registry.js",
+      "dist/registry.js.map",
+      "dist/schemas.d.ts",
+      "dist/schemas.js",
+      "dist/schemas.js.map",
+      "package.json"
+    ]
+  },
+  "prePublicationChecks": {
+    "localTests": 77,
+    "testsPassed": 77,
+    "mutationsDetected": 8,
+    "loopbackRequests": 200,
+    "cleanTarballInstall": true
+  },
+  "publishAttempt": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "exitCode": 1,
+    "errorCode": "E403",
+    "reason": "Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages."
+  },
+  "anonymousVersionReadbackStatus": 404,
+  "published": false,
+  "requires": "Owner completes the npm publishing authentication requirement.",
+  "credentialsStoredInRepository": false,
+  "competitionWrites": 0,
+  "financialSignatures": 0,
+  "payments": 0,
+  "publicSourceSecretCheck": {
+    "tool": "Gitleaks 8.30.1",
+    "firstPartyFiles": 64,
+    "detections": 0,
+    "redacted": true
+  }
+}

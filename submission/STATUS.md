@@ -11,12 +11,14 @@ Owner: Ehsan Benvari / Trex2021.
 - Signed bid: not sent.
 - Accepted selection / PACT: not received or agreed.
 - Submission / delivery: not sent to the organizer.
-- npm publication: pending operator account/scope access.
+- npm account: web login completed; npm whoami verified ehsan_benvari. The controlled package target is @ehsan_benvari/lax-mcp@0.1.1.
+- npm publication: attempted from the verified 19-file release archive, but npm returned E403 requiring publishing authentication with 2FA. Anonymous version readback returned 404. Publication and registry installation are not complete; see evidence/publication/attempt.json.
 - Public repository: https://github.com/Trex2021/lax-mcp; source publication is recorded by the repository commit.
 - Earlier 0.1.0 CI: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; evidence/ci.json is historical.
 - Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.
 - Prize payment and operator payout eligibility: unverified.
-- Follow-up readiness: final evidence commit 1e9231775202920b1b013a75e4579efe463e0d5f also passed CI and CodeQL; a fresh local package install passed. npm web login was initiated but not completed; its unauthenticated session was cancelled pending owner input. See OWNER-HANDOFF.md and evidence/entry-readiness.json. Automatic approval review blocked a fresh offer-quote POST; only read-only price/schema checks were completed.
+- Current release preparation: 08ad9613472a5b7422c105ff4ceb521aaa48f03a merged the verified npm scope and installation guidance. Local checks passed 77 tests, 8 planted regressions, 200 loopback requests and clean tarball installation. Main CI and CodeQL completed successfully; see evidence/publication/ci.json. Production TypeScript and locked dependency versions are unchanged. See OWNER-HANDOFF.md for the remaining owner actions.
+- Offer-quote POST: automatic approval review blocked a fresh draft POST; only read-only price/schema checks were completed. The later npm login confirmation does not authorize that separate listing request.
 
 Entry requires an operator-controlled Base wallet, the agent's actual DID,
 a current exact fee quote and a wallet signature. The review repository URL

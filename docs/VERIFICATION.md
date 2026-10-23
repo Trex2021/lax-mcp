@@ -3,6 +3,18 @@
 Current candidate: 0.1.1, reviewed 23 October 2026. These are candidate results,
 not organizer acceptance. Test names A1 to A7 map to the job specification.
 
+Release preparation on 24 October 2026 (Asia/Tehran) verified the npm account
+ehsan_benvari and prepared @ehsan_benvari/lax-mcp@0.1.1. The new scope passed
+the same 77 local tests, eight planted regressions, local pressure and clean
+tarball install. [Main CI and CodeQL](../evidence/publication/ci.json) passed for
+08ad9613472a5b7422c105ff4ceb521aaa48f03a. Production TypeScript and locked
+dependency versions did not change. The npm publish attempt returned E403
+requiring publishing authentication with 2FA, and anonymous version readback
+returned 404. [Attempt evidence](../evidence/publication/attempt.json) records
+that boundary; A6 remains open. Original audit hashes below identify the earlier
+scope; [current hashes](../evidence/publication/source-inventory.json) identify
+the publication candidate.
+
 | Current check | Result | Evidence |
 | --- | --- | --- |
 | Offline Node 20.20.2 | 77 passed, 0 failed | [log](../evidence/security/tests-node20.txt) |

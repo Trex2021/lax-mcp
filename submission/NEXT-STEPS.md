@@ -23,14 +23,15 @@ unfinished. These steps do not happen automatically when the tests pass.
    using EIP-191. Submit once to /registry/jobs/<id>/bids with x-lax-time and
    x-lax-signature, before 29 October 2026 at 20:00 UTC. Record the returned
    bid ID/status. No accepted bid is claimed by this repository.
-6. Authenticate the npm CLI securely, verify the account with npm whoami and
-   verify ownership of the proposed @trex2021 scope. If that scope is not
-   controlled, choose a controlled available package name and update its
-   references, then rerun the package check. Build, review npm pack and
-   publish with public access. Independently read back the package, install it
-   in a fresh directory and record its version/integrity. Do not put a token
-   into source or chat. The npm sign-in page blocked the current cloud browser;
-   no npm authentication or publication has occurred.
+6. npm web login is verified as ehsan_benvari; the prepared package is now
+   @ehsan_benvari/lax-mcp@0.1.1. Its local and cross-platform checks passed.
+   npm rejected publication with E403 requiring publishing authentication with
+   2FA. The owner must complete that requirement on npm, then authenticate again
+   if needed. Publish the exact tested archive with public access. Independently
+   read back its version and integrity, install it in a fresh directory and
+   exercise the installed exports and bin. No successful publication or registry
+   install is claimed yet. Do not put a password, OTP, token or recovery code
+   into source or chat.
 7. If selected, read the actual PACT and review its price, deadlines, payee,
    milestones and obligations before agreeing. Deliver M1 and M2 through the
    signed delivery API with their exact full repository commits. The product

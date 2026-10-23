@@ -1,7 +1,7 @@
 {
-  "recorded": "2026-10-23T20:02:27.419Z",
+  "recorded": "2026-10-23T21:42:46.425555+00:00",
   "kind": "read-only-entry-readiness",
-  "sourceCommit": "1e9231775202920b1b013a75e4579efe463e0d5f",
+  "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
   "job": {
     "id": "a14478ee-35f7-4457-843a-482f25af6dad",
     "title": "LAX MCP server",
@@ -48,11 +48,15 @@
   "freshServerQuoteObtained": false,
   "quotePost": "blocked by automatic approval review; used read-only schema and price metadata instead",
   "npm": {
-    "authenticated": false,
-    "webLoginInitiated": true,
+    "authenticated": true,
+    "username": "ehsan_benvari",
+    "package": "@ehsan_benvari/lax-mcp",
+    "version": "0.1.1",
     "published": false,
-    "note": "Authentication URLs and credentials are not stored here.",
-    "webLoginStatus": "Not completed; the CLI requested a username. The unauthenticated session was cancelled. A fresh secure login is required when the owner is ready."
+    "webLoginStatus": "Completed and verified with npm whoami.",
+    "publicationStatus": "npm rejected the publish request with E403, requiring publishing authentication with 2FA.",
+    "evidence": "evidence/publication/attempt.json",
+    "note": "No authentication URL, token or credential is stored here."
   },
   "codexDeepCoordinatorAvailable": false,
   "financialSignatures": 0,

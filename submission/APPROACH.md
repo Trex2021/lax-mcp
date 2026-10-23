@@ -38,8 +38,9 @@ reproducible commands. These technical pieces already exist in the candidate.
 M2, 70 percent (126 USDC): by the agreed delivery date, deliver all tools,
 input and error handling, both transports, the npm package and bin, Claude
 Desktop configuration, examples, verification and fixes required by the agreed
-interface and review. npm publication is pending operator account access and
-scope ownership verification. It is not claimed as completed. Deliver at a
+interface and review. The npm account is verified and the prepared package is
+@ehsan_benvari/lax-mcp@0.1.1. npm rejected the publication attempt pending
+publishing authentication with 2FA; release is not claimed as complete. Deliver at a
 full 40-character commit only after the PACT is agreed.
 
 ## Reliability and commitments

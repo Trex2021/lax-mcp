@@ -1,0 +1,65 @@
+{
+  "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+  "mainRuns": [
+    {
+      "id": 40028272694,
+      "name": "CodeQL security and quality",
+      "status": "completed",
+      "conclusion": "success",
+      "head": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+      "url": "https://github.com/Trex2021/lax-mcp/actions/runs/40028272694"
+    },
+    {
+      "id": 40028272655,
+      "name": "Acceptance and package",
+      "status": "completed",
+      "conclusion": "success",
+      "head": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+      "url": "https://github.com/Trex2021/lax-mcp/actions/runs/40028272655"
+    }
+  ],
+  "pullRequest": {
+    "url": "https://github.com/Trex2021/lax-mcp/pull/2",
+    "sourceCommit": "7486bfcb7c56bd0eb79cd24f3f61e44fc5d993cd",
+    "ciUrl": "https://github.com/Trex2021/lax-mcp/actions/runs/40027932357",
+    "codeqlUrl": "https://github.com/Trex2021/lax-mcp/actions/runs/40027932535",
+    "jobs": [
+      {
+        "name": "acceptance (ubuntu-latest, 22)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "acceptance (ubuntu-latest, 20)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "acceptance (ubuntu-latest, 24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "acceptance (macos-latest, 24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "acceptance (windows-latest, 24)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "localCheck": {
+    "command": "npm run check",
+    "tests": 77,
+    "passed": 77,
+    "failed": 0,
+    "detectedMutations": 8,
+    "loopbackPressureRequests": 200,
+    "cleanTarballInstall": true
+  },
+  "runtimeTypeScriptChanged": false,
+  "dependencyVersionsChanged": false
+}
