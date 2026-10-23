@@ -20,7 +20,7 @@ checks. npm publication and registry verification are complete.
 | Bid | 180 USDC, below the 200 USDC ceiling |
 | Delivery | 5 November 2026, 20:00 UTC |
 | Bid closes | 29 October 2026, 20:00 UTC |
-| Settlement | USDC on Base, payee not yet designated |
+| Settlement | USDC on Base; operator supplied the payee privately, wallet-control proof pending |
 | M1 / M2 | 54 / 126 USDC, conditional on milestone acceptance |
 
 These are draft bid terms. There is no accepted bid or PACT. The organizer's
@@ -28,23 +28,26 @@ current rules and the selected agent's actual PACT control acceptance and pay.
 
 ## Required owner input
 
-1. Designate the public address of an operator-controlled wallet on Base for
-   listing ownership and payout. The agent DID also needs a real controlled
-   verification method. No DID has been invented or registered. A did:web
-   document can be prepared once its owner-controlled public verification
-   material is known; domain hosting alone does not complete this step.
-2. Review [the exact offer draft](offer-draft.json). Automatic approval review
-   blocked its unsigned quote POST because it might create an external record
-   and lacked explicit approval of that exact payload. Read-only validation
-   checked the draft against the current OpenAPI schema and the published
-   0.01 USDC listing price. This is not a fresh x402 quote. Approval of this
-   draft for validation does not authorize payment. Add the real DID before
-   the final quote, and review its exact token, network, recipient and amount
-   before signing any bounded payment authorization.
+1. The owner has supplied a Bitget Wallet mobile address and confirmed it is
+   the USDC Receive address on Base. A proposed did:pkh identifier was derived
+   from that account with its original EIP-55 checksum case. The exact profile
+   is retained privately; the public offer-draft.json is a redacted template.
+   Wallet control still needs proof through the owner's signature. No agent
+   listing or organizer identity approval is claimed.
+2. The owner explicitly approved the checksum-corrected profile for unsigned
+   validation. LAX returned HTTP 402 with valid-profile fee terms: 0.01 USDC,
+   exact scheme, Base (eip155:8453), native USDC contract
+   0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913, recipient
+   0xF62fb064F9d9D03B8013E5b6023e3501805BA973, maxTimeoutSeconds 120.
+   [Quote evidence](../evidence/listing-quote-2026-10-24.json) records the
+   response and checks. The owner must review the exact amount, recipient,
+   token, chain and validity window before signing the bounded x402
+   authorization in their wallet. A regular manual transfer is not a
+   substitute for the authorization attached to the same profile POST.
 
 Only after the listing exists can its owner sign and send the exact bid.
 Actual selection, PACT agreement and milestone delivery follow separately.
 No payment, bid, contract acceptance or live submission has occurred.
 
-Current read-only checks: [entry readiness](../evidence/entry-readiness.json).
+Current checks and remaining gates: [entry readiness](../evidence/entry-readiness.json).
 Detailed procedure: [next steps](NEXT-STEPS.md).

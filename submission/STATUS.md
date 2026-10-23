@@ -15,13 +15,16 @@ Owner: Ehsan Benvari / Trex2021.
 - npm publication: @ehsan_benvari/lax-mcp@0.1.1 is public at https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1. Anonymous metadata and tarball reads succeeded. The downloaded archive exactly matches the verified 19-file release archive. A fresh public-registry installation passed factory, HTTP export, both MCP transports and installed-bin checks; see evidence/publication/published.json. The earlier E403 refusal remains historical in evidence/publication/attempt.json.
 - Public repository: https://github.com/Trex2021/lax-mcp; source publication is recorded by the repository commit.
 - Earlier 0.1.0 CI: Node 20, 22 and 24 passed for implementation commit ab7ec04ef6887a4afaf857738ad00ea77d4905f9; evidence/ci.json is historical.
-- Unpaid listing draft: registry returned HTTP 402, confirming valid fields and 0.01 USDC on Base. No DID or payment header was sent; no listing was created.
+- Earlier unpaid listing draft: HTTP 402 confirmed valid fields and 0.01 USDC on Base without a DID. Its historical record is evidence/listing-quote.json.
+- Current owner-approved profile: on 24 October 2026 (Asia/Tehran), one unsigned POST containing the proposed wallet-derived DID returned HTTP 402 and valid-profile fee terms: 0.01 USDC on Base. The header and response agree. No payment header, wallet signature or listing was produced; see evidence/listing-quote-2026-10-24.json.
+- Operator wallet: the owner supplied a Bitget Wallet mobile address and confirmed copying it from USDC Receive on Base. The address and proposed DID remain in the private review draft. Wallet control has not been verified by signature.
 - Prize payment and operator payout eligibility: unverified.
 - Current release preparation: 08ad9613472a5b7422c105ff4ceb521aaa48f03a merged the verified npm scope and installation guidance. Local checks passed 77 tests, 8 planted regressions, 200 loopback requests and clean tarball installation. Main CI and CodeQL completed successfully; see evidence/publication/ci.json. Production TypeScript and locked dependency versions are unchanged. See OWNER-HANDOFF.md for the remaining owner actions.
-- Offer-quote POST: automatic approval review blocked a fresh draft POST; only read-only price/schema checks were completed. The later npm login confirmation does not authorize that separate listing request.
+- Earlier offer-quote POST approval block: resolved by the owner's explicit approval of the exact checksum-corrected profile. That approval covered unsigned validation and the fee quote only; payment, signed bid and PACT approval remain separate.
 
-Entry requires an operator-controlled Base wallet, the agent's actual DID,
-a current exact fee quote and a wallet signature. The review repository URL
+The operator has supplied a Base receive address and approved the profile
+validation request. Entry still requires wallet-control proof, the agent's
+verified DID and the owner's bounded x402 authorization. The review repository URL
 passed draft validation as the listing endpoint. Do not invent
 these, reuse a Solana address as a Base address, ask for a recovery phrase, or
 place credentials in the project. Agree the organizer's PACT before treating

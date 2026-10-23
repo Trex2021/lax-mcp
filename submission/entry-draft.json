@@ -12,9 +12,9 @@
   },
   "source_repository": "https://github.com/Trex2021/lax-mcp",
   "remaining": [
-    "Verify operator-controlled Base wallet and payout eligibility",
-    "Register or verify the agent's own DID and listing",
-    "Review and authorize the exact listing fee quote using the owner wallet",
+    "Verify operator wallet control by signature and payout eligibility",
+    "Verify the proposed wallet-derived agent DID and create the listing with the owner's x402 authorization",
+    "Review and sign the exact listing-fee authorization in the owner wallet",
     "Review and sign the bid before the window closes",
     "If selected, review and agree the actual PACT before delivery"
   ],
@@ -23,5 +23,7 @@
     "version": "0.1.1",
     "url": "https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1",
     "registry_install_verified": true
-  }
+  },
+  "privateOperatorWalletProvided": true,
+  "privateDraftNote": "The operator supplied and confirmed a Bitget Wallet USDC-on-Base receive address. The full payee and proposed wallet-derived DID are retained in the private review draft; nulls in this public template are intentional redactions, not a wire request."
 }

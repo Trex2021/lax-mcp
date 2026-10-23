@@ -1,0 +1,47 @@
+{
+  "kind": "owner-approved-unsigned-listing-quote",
+  "started": "2026-10-23T22:41:54.521182+00:00",
+  "finished": "2026-10-23T22:42:00.226857+00:00",
+  "localDate": "2026-10-24",
+  "localTimezone": "Asia/Tehran",
+  "sourceCommit": "08ad9613472a5b7422c105ff4ceb521aaa48f03a",
+  "request": {
+    "method": "POST",
+    "url": "https://lax.kognai.ai/registry/offers",
+    "canonicalBodySha256": "19a694ea56200cc84361f907a1d1106dc1128d4bd6822f4edf28ecee17c46f92",
+    "containsProposedAgentDid": true,
+    "bodyOmitted": "Operator wallet address and proposed wallet-derived DID remain in the private review file."
+  },
+  "ownerApproval": "Explicit approval of the exact checksum-corrected profile for unsigned validation and a fee quote only.",
+  "status": 402,
+  "validation": "Profile accepted by the listing fee gate; payment authorization required.",
+  "x402Version": 2,
+  "requirements": {
+    "scheme": "exact",
+    "network": "eip155:8453",
+    "amount": "10000",
+    "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "payTo": "0xF62fb064F9d9D03B8013E5b6023e3501805BA973",
+    "maxTimeoutSeconds": 120,
+    "extra": {
+      "name": "USD Coin",
+      "version": "2"
+    }
+  },
+  "displayAmountUsdc": "0.01",
+  "verification": {
+    "paymentRequiredHeaderAgreesWithResponse": true,
+    "nativeBaseUsdcContractMatchesCircleDocs": true,
+    "circleContractSource": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "recipientMatchesEarlierOfficialRegistryQuote": true,
+    "ordinaryManualTransferIsNotTheListingProtocol": true
+  },
+  "walletControlVerified": false,
+  "organizerContestAcceptance": false,
+  "paymentHeadersSent": false,
+  "walletSignatures": 0,
+  "payments": 0,
+  "listingCreated": false,
+  "bidSubmitted": false,
+  "pactAccepted": false
+}

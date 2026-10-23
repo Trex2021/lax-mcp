@@ -25,7 +25,12 @@
     "schemaValidation": "passed with AJV against current public OpenAPI",
     "registered": false,
     "agentDidEstablished": false,
-    "operatorBaseAddressKnown": false
+    "operatorBaseAddressKnown": true,
+    "operatorWalletApplication": "Bitget Wallet mobile, operator confirmed",
+    "baseUsdcReceiveAddressConfirmed": true,
+    "proposedDidMethod": "did:pkh",
+    "walletControlVerified": false,
+    "feeGateValidation": "passed for the owner-approved profile containing its proposed DID"
   },
   "publishedListingPrice": {
     "mode": "fixed",
@@ -45,8 +50,8 @@
       }
     }
   ],
-  "freshServerQuoteObtained": false,
-  "quotePost": "blocked by automatic approval review; used read-only schema and price metadata instead",
+  "freshServerQuoteObtained": true,
+  "quotePost": "Explicit owner approval received for the exact checksum-corrected profile. One unsigned POST returned HTTP 402 and valid-profile fee terms; no payment header or wallet signature was sent.",
   "npm": {
     "authenticated": true,
     "username": "ehsan_benvari",
@@ -67,6 +72,19 @@
   "financialSignatures": 0,
   "payments": 0,
   "pactAccepted": false,
-  "updated": "2026-10-23T21:58:25.702611+00:00",
-  "organizerMetadataNote": "Job, schema and price are earlier read-only snapshots; no new organizer request was made during npm publication."
+  "updated": "2026-10-23T22:47:17.768327+00:00",
+  "organizerMetadataNote": "Job and OpenAPI fields are earlier read-only snapshots. The fee quote was refreshed by one owner-approved unsigned profile POST on 24 October 2026 (Asia/Tehran).",
+  "currentQuoteEvidence": "evidence/listing-quote-2026-10-24.json",
+  "currentQuoteRequirements": {
+    "scheme": "exact",
+    "network": "eip155:8453",
+    "amount": "10000",
+    "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "payTo": "0xF62fb064F9d9D03B8013E5b6023e3501805BA973",
+    "maxTimeoutSeconds": 120,
+    "extra": {
+      "name": "USD Coin",
+      "version": "2"
+    }
+  }
 }

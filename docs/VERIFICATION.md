@@ -32,7 +32,8 @@ published candidate.
 | Published npm release | Anonymous reads, exact archive match, fresh public-registry install, both MCP transports, exports and installed bin passed | [record](../evidence/publication/published.json), [npm](https://www.npmjs.com/package/@ehsan_benvari/lax-mcp/v/0.1.1) |
 | Synthetic stdio demonstration | Five tools, recovery and pre-I/O refusal passed | [record](../evidence/demo.json) |
 | Live public reads | 4 successes, HTTP 200, 0 writes | [record](../evidence/live-smoke.json) |
-| Unpaid listing validation | HTTP 402: offer valid, 0.01 USDC required | [record](../evidence/listing-quote.json) |
+| Earlier unsigned listing validation | HTTP 402: draft without DID valid, 0.01 USDC required | [historical record](../evidence/listing-quote.json) |
+| Owner-approved profile quote, 24 October 2026 | HTTP 402: checksum-corrected profile with proposed DID valid; 0.01 USDC on Base; no payment or wallet signature | [record](../evidence/listing-quote-2026-10-24.json) |
 | GitHub CI, reviewed implementation | 77 tests, demo, pressure and package checks passed in all five environments; eight mutations detected on Linux 24 | [record](../evidence/security/ci.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019642) |
 | CodeQL, reviewed implementation | security-and-quality completed; inspected SARIF has 0 results and all production files extracted | [record](../evidence/security/codeql.json), [run](https://github.com/Trex2021/lax-mcp/actions/runs/40014019651) |
 | Release CI and CodeQL, main | CI passed in all five environments; CodeQL completed successfully for the published source commit | [record](../evidence/publication/ci.json), [CI](https://github.com/Trex2021/lax-mcp/actions/runs/40028272655), [CodeQL](https://github.com/Trex2021/lax-mcp/actions/runs/40028272694) |
@@ -45,12 +46,17 @@ publication and registry-installation checks are complete.
 
 The production and dev dependency audit returned zero known advisories at check time.
 This is a point-in-time advisory lookup, not a security guarantee. Dependencies
-are locked. The listing quote did not include
-a DID or any payment header, and did not create a listing. A final offer with
-its real DID needs a fresh quote before wallet authorization.
+are locked. The earlier quote omitted a DID. The owner later supplied and
+confirmed a Base receive address and approved the exact profile containing
+its proposed wallet-derived DID. The new unsigned POST returned valid-profile
+fee terms; its PAYMENT-REQUIRED header agrees with the response. The native
+USDC contract matches Circle's published Base address. Wallet control still
+requires the owner's signature. Neither quote created a listing or included
+a payment header.
 
-No wallet signature, listing, bid, PACT, organizer acceptance or live organizer
-write is represented by this table. See [entry status](../submission/STATUS.md).
+The owner-approved profile was transmitted for validation. No wallet
+signature, listing, bid, PACT, organizer acceptance or payment is represented
+by this table. See [entry status](../submission/STATUS.md).
 
 ## Historical 0.1.0 CI
 

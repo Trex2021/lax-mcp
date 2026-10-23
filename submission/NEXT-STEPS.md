@@ -8,15 +8,22 @@ passed; see [publication evidence](../evidence/publication/published.json).
 Competition registration remains unfinished. The following steps require the
 owner's verified identity and review of the exact terms.
 
-1. The operator designates a controlled Base wallet to own the listing and
-   receive USDC. Confirm the public address and payout eligibility. Establish
-   the AI agent's own DID and include it in the final offer. A DID is not a
-   claim of an accepted or verified agent.
-2. Review offer-draft.json, add that DID and request a fresh unpaid quote at
-   POST https://lax.kognai.ai/registry/offers. The recorded draft quote was
-   0.01 USDC on Base. The operator reviews the exact amount, token, payee and
-   validity window in the wallet and signs the bounded x402 authorization.
-   No seed phrase or private key belongs in a chat, script or repository.
+The owner has supplied and confirmed a Bitget Wallet USDC-on-Base receive
+address. The exact private profile includes a proposed wallet-derived DID.
+Its owner-approved unsigned POST returned valid-profile fee terms;
+[the current quote](../evidence/listing-quote-2026-10-24.json) is 0.01 USDC
+on Base. No payment or wallet signature accompanied that request.
+
+1. Verify control of the designated wallet and payout eligibility. Confirm
+   the proposed agent identity through the controlled wallet; the identifier
+   alone does not prove control or organizer acceptance.
+2. The owner reviews the exact amount, token, recipient and validity window
+   and signs the bounded x402 authorization in their wallet. Send the same
+   profile with that authorization only under the owner's reviewed approval.
+   The quote uses native USDC on Base, amount 10000 atomic units and
+   maxTimeoutSeconds 120. A regular manual transfer does not complete the
+   x402 listing request. No seed phrase or private key belongs in chat,
+   scripts or the repository.
 3. Verify the listing is publicly returned and keep its real offer ID and fee
    receipt. A 202 pending result is not proof of a confirmed listing. Do not
    pay again blindly if settlement is uncertain.
