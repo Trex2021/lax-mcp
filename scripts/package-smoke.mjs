@@ -28,8 +28,8 @@ try {
   runNpm(['install', '--ignore-scripts', '--no-audit', '--no-fund', resolve(packed.filename)], temp);
   await writeFile(join(temp, 'check.mjs'), `
     import assert from 'node:assert/strict';
-    import { createLaxMcpServer } from '@trex2021/lax-mcp';
-    import { createLaxHttpApp } from '@trex2021/lax-mcp/http';
+    import { createLaxMcpServer } from '@ehsan_benvari/lax-mcp';
+    import { createLaxHttpApp } from '@ehsan_benvari/lax-mcp/http';
     import { Client } from '@modelcontextprotocol/sdk/client/index.js';
     import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
     const server = createLaxMcpServer({fetch: async () => new Response('{"jobs":[],"count":0}')});
@@ -44,7 +44,7 @@ try {
     } finally { await client.close(); await server.close(); }
   `);
   run(process.execPath, ['check.mjs'], temp);
-  const help = run(process.execPath, ['node_modules/@trex2021/lax-mcp/dist/cli.js', '--help'], temp);
+  const help = run(process.execPath, ['node_modules/@ehsan_benvari/lax-mcp/dist/cli.js', '--help'], temp);
   assert.equal(help, '');
   if (process.platform !== 'win32') {
     assert.equal(run(join(temp, 'node_modules/.bin/lax-mcp'), ['--version'], temp), '');
@@ -53,7 +53,7 @@ try {
   const files = packed.files.map(x => x.path);
   assert.ok(files.includes('dist/cli.js') && files.includes('dist/index.d.ts'));
   assert.ok(files.every(x => !/^(src|test|evidence|submission|node_modules)\//.test(x)));
-  const installed = JSON.parse(await readFile(join(temp, 'node_modules/@trex2021/lax-mcp/package.json'), 'utf8'));
+  const installed = JSON.parse(await readFile(join(temp, 'node_modules/@ehsan_benvari/lax-mcp/package.json'), 'utf8'));
   assert.equal(installed.bin['lax-mcp'], 'dist/cli.js');
   const report = { kind: 'clean-tarball-install', started, finished: new Date().toISOString(), node: process.version,
     publishedToNpm: false, package: packed.name, version: packed.version, filename: packed.filename,

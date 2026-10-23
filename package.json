@@ -1,5 +1,5 @@
 {
-  "name": "@trex2021/lax-mcp",
+  "name": "@ehsan_benvari/lax-mcp",
   "version": "0.1.1",
   "description": "Five LAX registry tools for MCP clients, with stdio and Streamable HTTP transports.",
   "type": "module",

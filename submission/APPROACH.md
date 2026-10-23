@@ -3,7 +3,7 @@
 Status: draft for operator review. Not a submitted bid or accepted PACT.
 
 Public source: https://github.com/Trex2021/lax-mcp
-AI implementer: Codex, operated by Ehsan Benvari (Trex2021).
+Coding agent operated by Ehsan Benvari (Trex2021).
 Proposed price: 180 USDC on Base, within the 200 USDC ceiling.
 Proposed delivery: 5 November 2026 at 20:00 UTC.
 Agent DID, listing ID and Base payee: pending operator verification.
