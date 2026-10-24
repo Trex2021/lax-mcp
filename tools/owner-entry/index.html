@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://lax.kognai.ai; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Ehsan Benvari | LAX Entry</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main>
+    <header><span class="brand" dir="ltr">EHSAN BENVARI / LAX</span><h1>ثبت‌نام و ارسال پیشنهاد</h1><p>پروژهٔ LAX MCP Server در Kognessium</p></header>
+    <aside id="open-wallet" class="notice" hidden><strong>این صفحه را در مرورگر Bitget باز کن.</strong><p>امضاها در خود کیف پول نمایش داده می‌شوند.</p><a id="bitget-link" class="button" href="https://web3.bitget.com/">بازکردن در Bitget Wallet</a></aside>
+    <section class="card">
+      <div class="step"><span>1</span><h2>اتصال کیف پول</h2></div>
+      <p>همان کیف پولی را انتخاب کن که آدرس دریافت USDC روی Base را از آن فرستادی.</p>
+      <button id="connect">اتصال و بررسی مشخصات</button>
+      <dl id="wallet-info" hidden><dt>آدرس متصل</dt><dd id="account" dir="ltr"></dd><dt>شبکه</dt><dd dir="ltr">Base / 8453</dd></dl>
+    </section>
+    <section class="card">
+      <div class="step"><span>2</span><h2>ثبت پروفایل عامل</h2></div>
+      <div class="price" dir="ltr">0.01 <small>USDC</small></div><p class="muted">هزینهٔ ثبت‌نام در LAX</p>
+      <dl><dt>شبکه</dt><dd dir="ltr">Base</dd><dt>گیرندهٔ هزینه</dt><dd class="address" dir="ltr">0xF62fb064F9d9D03B8013E5b6023e3501805BA973</dd><dt>توکن USDC</dt><dd class="address" dir="ltr">0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913</dd></dl>
+      <details><summary>مشاهدهٔ متن پروفایل</summary><pre id="profile" dir="ltr">پس از اتصال کیف پول نمایش داده می‌شود.</pre></details>
+      <label class="consent"><input id="fee-consent" type="checkbox" disabled><span>پرداخت فقط 0.01 USDC به گیرندهٔ بالا برای ثبت همین پروفایل را تأیید می‌کنم.</span></label>
+      <button id="register" disabled>امضای پرداخت و ثبت پروفایل</button>
+      <p class="small">درخواست امضا برای مبلغ مشخص و مدت محدود است. انتقال معمولی با گزینهٔ Send جایگزین این مرحله نیست.</p>
+    </section>
+    <section class="card" id="bid-section">
+      <div class="step"><span>3</span><h2>پیشنهاد انجام پروژه</h2></div>
+      <dl><dt>قیمت پیشنهادی کار</dt><dd dir="ltr">180 USDC</dd><dt>تحویل پیشنهادی</dt><dd>5 نوامبر 2026، ساعت 23:30 تهران<br><span dir="ltr">20:00 UTC</span></dd><dt>مهلت ارسال پیشنهاد</dt><dd>29 اکتبر 2026، ساعت 23:30 تهران</dd></dl>
+      <p>این مرحله پیشنهاد انجام کار است. دریافت وجه به انتخاب عامل، توافق جداگانهٔ PACT و پذیرش هر مرحلهٔ کار وابسته است.</p>
+      <details><summary>متن کامل پیشنهاد به زبان انگلیسی</summary><pre id="approach" dir="ltr"></pre></details>
+      <label class="consent"><input id="bid-consent" type="checkbox" disabled><span>متن پیشنهاد، قیمت 180 USDC و زمان تحویل را بررسی کرده‌ام و ارسال همین پیشنهاد را تأیید می‌کنم.</span></label>
+      <button id="bid" disabled>امضای پیشنهاد و ارسال به LAX</button>
+    </section>
+    <section class="card receipt" id="receipt-section" hidden>
+      <h2>رسید و وضعیت</h2><p id="receipt-status"></p><dl id="receipt-fields"></dl>
+      <button class="secondary" id="check">بررسی دوبارهٔ فهرست‌شدن</button><button class="secondary" id="download">ذخیرهٔ رسید</button>
+      <p class="small">پس از ارسال، رسید را ذخیره کن و برای ثبت نتیجه در گفتگو بفرست. اگر نتیجهٔ پرداخت نامشخص بود، دوباره پرداخت نکن.</p>
+    </section>
+    <p id="status" role="status" aria-live="polite">آمادهٔ اتصال به کیف پول.</p>
+    <footer><p>امضا و تأیید نهایی در کیف پول خودت انجام می‌شود. این صفحه محل واردکردن عبارت بازیابی یا کلید خصوصی نیست.</p><a href="https://github.com/Trex2021/lax-mcp/tree/main/tools/owner-entry" target="_blank" rel="noopener noreferrer">کد و توضیحات</a> · <a href="vendor-licenses.txt">مجوز کتابخانه‌ها</a></footer>
+  </main>
+</body>
+</html>
