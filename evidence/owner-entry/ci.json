@@ -1,0 +1,46 @@
+{
+  "kind": "owner-entry-immutable-commit-ci-verification",
+  "pullRequest": "https://github.com/Trex2021/lax-mcp/pull/3",
+  "sourceCommit": "3917f662f12b7191e44db1dce98010ecb3824b56",
+  "mainMerge": "c8c9918c25c03e85afaad9b167b9a77137f931a2",
+  "localDate": "2026-10-25",
+  "timezone": "Asia/Tehran",
+  "pullRequestRuns": {
+    "helper": { "id": 40222791309, "conclusion": "success" },
+    "acceptance": { "id": 40222791279, "conclusion": "success" },
+    "codeql": { "id": 40222791252, "conclusion": "success" }
+  },
+  "mainRuns": {
+    "helper": { "id": 40222947238, "conclusion": "success", "url": "https://github.com/Trex2021/lax-mcp/actions/runs/40222947238" },
+    "acceptance": { "id": 40222947243, "conclusion": "success", "url": "https://github.com/Trex2021/lax-mcp/actions/runs/40222947243" },
+    "codeql": { "id": 40222947275, "conclusion": "success", "url": "https://github.com/Trex2021/lax-mcp/actions/runs/40222947275" }
+  },
+  "inspectedHelperJobLogs": {
+    "offlineFlowJob": 121257787293,
+    "semgrepJob": 121257787486,
+    "coreAndFlowTests": 27,
+    "failedTests": 0,
+    "browser": "Chrome 155.0.8059.39",
+    "browserScenarios": 8,
+    "checkedInStaticBuildMatches": true,
+    "dependencyAdvisories": 0,
+    "semgrep": { "version": "1.182.1", "rulesRun": 79, "targetsScanned": 8, "findings": 0 },
+    "realRegistryRequests": 0,
+    "realOperatorSignatures": 0
+  },
+  "mainAcceptanceMatrix": [
+    { "os": "ubuntu-latest", "node": 20, "conclusion": "success" },
+    { "os": "ubuntu-latest", "node": 22, "conclusion": "success" },
+    { "os": "ubuntu-latest", "node": 24, "conclusion": "success" },
+    { "os": "windows-latest", "node": 24, "conclusion": "success" },
+    { "os": "macos-latest", "node": 24, "conclusion": "success" }
+  ],
+  "codeqlWorkflowPassed": true,
+  "newCodeqlSarifInspected": false,
+  "githubPagesEnabled": false,
+  "liveBitgetFlowVerified": false,
+  "listingCreated": false,
+  "bidSent": false,
+  "payments": 0,
+  "pactAccepted": false
+}

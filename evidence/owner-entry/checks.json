@@ -44,8 +44,11 @@
     "reason": "Restored local scanner runtime could not execute successfully. No new zero-findings result is claimed. Clean isolated CI run is configured."
   },
   "ci": {
-    "status": "pending at preparation time",
-    "workflow": ".github/workflows/owner-entry.yml"
+    "status": "success for source and main merge",
+    "sourceCommit": "3917f662f12b7191e44db1dce98010ecb3824b56",
+    "mainMerge": "c8c9918c25c03e85afaad9b167b9a77137f931a2",
+    "verifiedAt": "2026-10-25T18:50:41.866984+00:00",
+    "evidence": "ci.json"
   },
   "packageRegression": {
     "passed": true,

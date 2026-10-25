@@ -80,10 +80,21 @@ The local clean-install check reproduced the exact 19-file npm archive;
 its SHA-1 is still `2b62af5afb1a9dc005bb96beccbbf95841b56c2f`.
 Dependency audit reported zero known advisories at check time. A fresh,
 checksum-verified Gitleaks 8.30.1 scan of the public working snapshot found
-no leaks. Local Semgrep could not complete with the restored runtime; the
-dedicated workflow runs it in a clean isolated environment. CI outcomes
-must be checked against the actual helper commit, separately from earlier
-MCP security evidence.
+no leaks. Local Semgrep could not complete with the restored runtime. The
+clean isolated GitHub run completed 79 rules on eight helper source/workflow
+files with zero findings. The inspected CI browser log reports Chrome
+155.0.8059.39, 27 passing core/flow tests, eight browser scenarios, a matching
+static build and zero dependency advisories.
+
+PR 3 passed all three workflows at helper commit
+3917f662f12b7191e44db1dce98010ecb3824b56. The main merge
+c8c9918c25c03e85afaad9b167b9a77137f931a2 also passed
+[helper checks](https://github.com/Trex2021/lax-mcp/actions/runs/40222947238),
+[all five acceptance/package environments](https://github.com/Trex2021/lax-mcp/actions/runs/40222947243)
+and [CodeQL execution](https://github.com/Trex2021/lax-mcp/actions/runs/40222947275).
+The new CodeQL SARIF was not inspected; workflow success is not a claim of
+zero alerts. [The CI record](../evidence/owner-entry/ci.json) separates these
+outcomes from earlier MCP security evidence.
 
 See [helper checks](../evidence/owner-entry/checks.json),
 [browser results](../evidence/owner-entry/browser.json),

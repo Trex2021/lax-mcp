@@ -72,7 +72,7 @@
   "financialSignatures": 0,
   "payments": 0,
   "pactAccepted": false,
-  "updated": "2026-10-25T18:41:30.979735+00:00",
+  "updated": "2026-10-25T18:50:41.866984+00:00",
   "organizerMetadataNote": "The job was re-read with HTTP 200 on 25 October 2026 and remains open. The OpenAPI fields are review snapshots. The exact owner-approved unsigned profile quote is from 24 October 2026 (Asia/Tehran); the helper revalidates terms in the owner browser before signing.",
   "currentQuoteEvidence": "evidence/listing-quote-2026-10-24.json",
   "currentQuoteRequirements": {
@@ -95,6 +95,11 @@
     "evidence": "evidence/owner-entry/checks.json",
     "githubPagesEnabled": false,
     "liveWalletFlowVerified": false,
-    "ownerSignaturesPending": true
+    "ownerSignaturesPending": true,
+    "sourceCommit": "3917f662f12b7191e44db1dce98010ecb3824b56",
+    "mainMerge": "c8c9918c25c03e85afaad9b167b9a77137f931a2",
+    "ciPassed": true,
+    "ciEvidence": "evidence/owner-entry/ci.json",
+    "publicPageLastHttpStatus": 404
   }
 }
