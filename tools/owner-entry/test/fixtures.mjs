@@ -18,6 +18,14 @@ export function memoryStorage() {
   const values = new Map(); return { values, getItem: k => values.get(k) ?? null,
     setItem: (k, v) => values.set(k, v), removeItem: k => values.delete(k) };
 }
+export function memoryLocks() {
+  const active = new Set();
+  return { async request(name, _options, fn) {
+    if (active.has(name)) return fn(null);
+    active.add(name);
+    try { return await fn({ name }); } finally { active.delete(name); }
+  } };
+}
 export class FakeProvider {
   constructor() { this.address = wallet.address; this.chain = LIMITS.chainHex; this.calls = []; this.balance = 1000000n; }
   async request({ method, params }) {
@@ -53,7 +61,8 @@ export function harness(options = {}) {
       if (options.paymentError) throw new Error('fixture network failure');
       if (options.paymentStatus === 202) { body = { id: 'fixture-offer' }; status = 202; }
       else body = { ok: true, id: 'fixture-offer', transaction: '0x' + '1'.repeat(64) };
-    } else if (path === '/offers/fixture-offer') body = { offer: { ...profile, id: 'fixture-offer' } };
+    } else if (path === '/search') body = { results: [{ offer: { ...profile, id: 'fixture-offer' } }] };
+    else if (path === '/offers/fixture-offer') body = options.offer?.() ?? { offer: { ...profile, id: 'fixture-offer' } };
     else if (path === '/jobs/' + LIMITS.jobId + '/bids') {
       bids++;
       const b = JSON.parse(init.body), hs = new Headers(init.headers);
@@ -64,6 +73,6 @@ export function harness(options = {}) {
     } else throw new Error('Unexpected API route: ' + path);
     return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', ...headers } });
   };
-  const client = new EntryClient({ provider, storage, fetcher, template, approach, profileHash, now: () => NOW });
+  const client = new EntryClient({ provider, storage, locks: options.locks ?? memoryLocks(), fetcher, template, approach, profileHash, now: options.now ?? (() => NOW) });
   return { client, provider, storage, calls, get paid() { return paid; }, get bids() { return bids; } };
 }

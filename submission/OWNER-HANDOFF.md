@@ -51,3 +51,17 @@ No payment, bid, contract acceptance or live submission has occurred.
 
 Current checks and remaining gates: [entry readiness](../evidence/entry-readiness.json).
 Detailed procedure: [next steps](NEXT-STEPS.md).
+
+## Mobile signing helper
+
+An owner-run page is prepared in `docs/entry/`, with source, protocol limits
+and phone instructions in [tools/owner-entry](../tools/owner-entry/README.md).
+The helper's fixture checks are separate from the published MCP checks.
+Enable GitHub Pages from `main` and `/docs`, verify the live page, then open
+`https://trex2021.github.io/lax-mcp/entry/` in Bitget's DApp browser. The URL is
+usable only after deployment. This page replaces manual signature construction;
+the owner still reviews and signs each exact fee and bid in the wallet.
+
+No helper fixture is a real registration. No listing ID, bid ID, wallet
+control proof or payment is claimed until the live owner-run result is
+verified. Keep receipts private until their intended contents are reviewed.

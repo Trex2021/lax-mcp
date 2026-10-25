@@ -9,6 +9,7 @@ Owner: Ehsan Benvari / Trex2021.
 - Organizer registry availability: intermittent HTTP 503 observed on 23 October 2026.
 - Registered LAX listing: not created; no listing ID is available.
 - Signed bid: not sent.
+- Owner-entry page: prepared under docs/entry with separate offline wallet-flow tests. GitHub Pages deployment and actual Bitget owner signatures remain pending; see tools/owner-entry/README.md and evidence/owner-entry/checks.json. No helper fixture is a real listing or bid.
 - Accepted selection / PACT: not received or agreed.
 - Submission / delivery: not sent to the organizer.
 - npm account: web login completed; npm whoami verified ehsan_benvari. The controlled package target is @ehsan_benvari/lax-mcp@0.1.1.

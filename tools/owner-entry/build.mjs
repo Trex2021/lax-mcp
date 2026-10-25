@@ -20,9 +20,12 @@ for (const name of Object.keys(result.metafile.inputs)) {
   for (;;) {
     try {
       const pkg = JSON.parse(await readFile(path.join(dir, 'package.json'), 'utf8'));
+      if (!pkg.name) throw new Error('Continue to the owning package');
+      let found = false;
       for (const filename of ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'LICENSE-MIT']) {
-        try { licenses.set(pkg.name, await readFile(path.join(dir, filename), 'utf8')); break; } catch {}
+        try { licenses.set(pkg.name, await readFile(path.join(dir, filename), 'utf8')); found = true; break; } catch {}
       }
+      if (!found) throw new Error('Missing bundled dependency licence: ' + pkg.name);
       break;
     } catch {}
     const parent = path.dirname(dir); if (parent === dir) break; dir = parent;

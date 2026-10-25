@@ -112,6 +112,23 @@ function nonce32() {
 }
 function safeId(v) { return typeof v === 'string' && /^[A-Za-z0-9_-]{1,100}$/.test(v) ? v : null; }
 function safeTx(v) { return typeof v === 'string' && /^0x[0-9a-fA-F]{64}$/.test(v) ? v : null; }
+function checkedReceipt(value, profileHash, account) {
+  const keys = ['version', 'profileHash', 'account', 'stage', 'nonce', 'validBefore', 'sent',
+    'httpStatus', 'offerId', 'paymentTx', 'bidBodySha256', 'bidTime', 'bidHttpStatus', 'bidId'];
+  if (!value || value.version !== 1 || value.profileHash !== profileHash || value.account !== account ||
+      !['payment_pending', 'registered', 'bid_pending', 'bid_submitted'].includes(value.stage) ||
+      Object.keys(value).some(k => !keys.includes(k)) || typeof value.sent !== 'boolean' ||
+      !/^0x[0-9a-f]{64}$/.test(value.nonce) || !/^[0-9]{1,12}$/.test(value.validBefore) ||
+      (value.offerId !== undefined && !safeId(value.offerId)) ||
+      (value.paymentTx !== undefined && !safeTx(value.paymentTx)) ||
+      (value.stage !== 'payment_pending' && (!safeId(value.offerId) || value.sent !== true)) ||
+      (value.bidId !== undefined && !safeId(value.bidId)) ||
+      (value.stage === 'bid_submitted' && !safeId(value.bidId)) ||
+      ([value.httpStatus, value.bidHttpStatus].some(s => s !== undefined && (!Number.isInteger(s) || s < 100 || s > 599))) ||
+      (['bid_pending', 'bid_submitted'].includes(value.stage) &&
+        (!/^[0-9a-f]{64}$/.test(value.bidBodySha256) || !Number.isFinite(Date.parse(value.bidTime))))) fail('INVALID_RECEIPT');
+  return value;
+}
 async function responseJson(response) {
   const reader = response.body?.getReader();
   if (!reader) fail('INVALID_RESPONSE');
@@ -129,29 +146,50 @@ async function responseJson(response) {
 }
 
 export class EntryClient {
-  constructor({ provider, template, approach, storage, fetcher = globalThis.fetch, now = () => Date.now(),
+  constructor({ provider, template, approach, storage, locks = globalThis.navigator?.locks,
+    fetcher = (url, init) => globalThis.fetch(url, init), now = () => Date.now(),
     profileHash = LIMITS.profileHash }) {
     this.provider = provider; this.template = JSON.parse(JSON.stringify(template)); this.approach = approach;
-    this.storage = storage; this.fetcher = fetcher; this.now = now; this.profileHash = profileHash;
+    this.storage = storage; this.locks = locks; this.fetcher = fetcher; this.now = now; this.profileHash = profileHash;
     this.storageKey = 'lax-owner-entry-' + profileHash; this.account = null; this.profile = null;
-    this.busy = false; this.receipt = null;
+    this.busy = false; this.receipt = null; this.ready = false;
   }
-  invalidate() { this.account = null; this.profile = null; this.quote = null; }
-  async exclusive(fn) {
+  invalidate() { this.ready = false; this.account = null; this.profile = null; this.quote = null; }
+  async exclusive(fn, signed = false) {
     if (this.busy) fail('BUSY'); this.busy = true;
-    try { return await fn(); } finally { this.busy = false; }
+    try {
+      if (!signed) return await fn();
+      if (!this.ready) fail('CONNECT_FIRST');
+      if (!this.locks?.request) fail('BROWSER_UNSUPPORTED');
+      return await this.locks.request(this.storageKey, { mode: 'exclusive', ifAvailable: true }, async lock => {
+        if (!lock) fail('BUSY');
+        await this.assertWallet(); this.loadReceipt(); return fn();
+      });
+    } finally { this.busy = false; }
   }
   async rpc(method, params = []) {
     try { return await this.provider.request({ method, params }); }
     catch (e) { fail(e?.code === 4001 ? 'USER_CANCELLED' : 'WALLET_ERROR'); }
   }
   save(next) {
-    const receipt = { version: 1, profileHash: this.profileHash, ...next };
+    const receipt = checkedReceipt({ version: 1, profileHash: this.profileHash, ...next }, this.profileHash, this.account);
     try {
       const value = JSON.stringify(receipt); this.storage.setItem(this.storageKey, value);
       if (this.storage.getItem(this.storageKey) !== value) fail('STORAGE_REQUIRED');
     } catch { fail('STORAGE_REQUIRED'); }
     this.receipt = receipt; return receipt;
+  }
+  loadReceipt() {
+    try {
+      const saved = this.storage.getItem(this.storageKey);
+      if (saved === null) return;
+      if (saved.length > 8192) fail('INVALID_RECEIPT');
+      const value = checkedReceipt(JSON.parse(saved), this.profileHash, this.account);
+      if (value.stage === 'payment_pending' && value.sent === false) {
+        this.storage.removeItem(this.storageKey);
+        if (this.storage.getItem(this.storageKey) !== null) fail('INVALID_RECEIPT');
+      } else this.receipt = value;
+    } catch { fail('INVALID_RECEIPT'); }
   }
   async request(path, { method = 'GET', body, headers = {} } = {}) {
     const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 20000);
@@ -170,6 +208,8 @@ export class EntryClient {
         String(await this.rpc('eth_chainId')).toLowerCase() !== LIMITS.chainHex) fail('WALLET_CHANGED');
   }
   async connect() { return this.exclusive(async () => {
+    this.invalidate();
+    try {
     if (!this.provider?.request) fail('OPEN_BITGET');
     const accounts = await this.rpc('eth_requestAccounts');
     if (!Array.isArray(accounts) || !accounts[0]) fail('WRONG_WALLET');
@@ -178,21 +218,17 @@ export class EntryClient {
       await this.rpc('wallet_switchEthereumChain', [{ chainId: LIMITS.chainHex }]);
     }
     this.account = account; this.profile = profile; await this.assertWallet();
-    try {
-      const saved = this.storage.getItem(this.storageKey);
-      if (saved) {
-        const value = JSON.parse(saved);
-        if (value.version !== 1 || value.profileHash !== this.profileHash || value.account !== account ||
-            !['payment_pending', 'registered', 'bid_pending', 'bid_submitted'].includes(value.stage)) fail('INVALID_RECEIPT');
-        if (value.stage === 'payment_pending' && value.sent === false) this.storage.removeItem(this.storageKey);
-        else this.receipt = value;
-      }
-    } catch { fail('INVALID_RECEIPT'); }
-    if (!this.receipt) await this.refreshQuote(); return { account, receipt: this.receipt };
+    this.loadReceipt();
+    if (!this.receipt) await this.refreshQuote();
+    this.ready = true; return { account, receipt: this.receipt };
+    } catch (e) { this.invalidate(); throw e; }
   }); }
   async refreshQuote() {
+    this.quote = null;
     await this.assertWallet();
-    checkJob((await this.request('/jobs/' + LIMITS.jobId)).body, this.now());
+    const job = await this.request('/jobs/' + LIMITS.jobId);
+    if (job.status !== 200) fail('JOB_NOT_OPEN');
+    checkJob(job.body, this.now());
     const response = await this.request('/offers', { method: 'POST', body: this.profile });
     if (response.status !== 402) fail('QUOTE_CHANGED');
     const quote = validateQuote(response.body);
@@ -202,7 +238,7 @@ export class EntryClient {
     try { decoded = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Uint8Array.from(atob(header), c => c.charCodeAt(0)))); }
     catch { fail('INVALID_RESPONSE'); }
     if (canonical(validateQuote(decoded)) !== canonical(quote)) fail('QUOTE_CHANGED');
-    this.quote = quote; return quote;
+    this.job = job.body; this.quote = quote; return quote;
   }
   async register() { return this.exclusive(async () => {
     if (this.receipt) fail('CHECK_RECEIPT');
@@ -219,6 +255,7 @@ export class EntryClient {
       const signature = await this.rpc('eth_signTypedData_v4', [account, JSON.stringify(typedFor(auth))]);
       await this.assertWallet();
       if (this.now() / 1000 >= Number(auth.validBefore) - 5) fail('AUTHORIZATION_EXPIRED');
+      checkJob(this.job, this.now());
       payload = paymentPayload(auth, signature, this.quote, account);
     } catch (e) {
       this.storage.removeItem(this.storageKey); this.receipt = null; throw e;
@@ -231,29 +268,42 @@ export class EntryClient {
     this.save({ ...this.receipt, httpStatus: result.status, ...(offerId ? { offerId } : {}), ...(tx ? { paymentTx: tx } : {}) });
     if (result.status !== 200 || result.body?.ok !== true || !offerId) fail('PAYMENT_PENDING');
     await this.verifyListing(); return this.receipt;
-  }); }
+  }, true); }
   async verifyListing() {
     await this.assertWallet();
-    const id = this.receipt?.offerId; if (!safeId(id)) fail('PAYMENT_PENDING');
+    let id = this.receipt?.offerId;
+    if (!safeId(id)) {
+      if (this.receipt?.stage !== 'payment_pending' || this.receipt.sent !== true) fail('PAYMENT_PENDING');
+      const search = await this.request('/search?query=' + encodeURIComponent(this.profile.name) + '&limit=100');
+      const rows = search.body?.results;
+      if (search.status !== 200 || !Array.isArray(rows)) fail('PAYMENT_PENDING');
+      const matches = rows.map(r => r?.offer).filter(o => o?.agent_did === this.profile.agent_did &&
+        o?.name === this.profile.name && o?.endpoint === this.profile.endpoint && safeId(o?.id));
+      if (matches.length !== 1) fail('PAYMENT_PENDING');
+      id = matches[0].id;
+    }
     const response = await this.request('/offers/' + encodeURIComponent(id));
     const offer = response.body?.offer ?? response.body;
-    if (response.status !== 200 || offer?.agent_did !== this.profile.agent_did ||
-        offer?.name !== this.profile.name || offer?.endpoint !== this.profile.endpoint ||
+    if (response.status !== 200 || offer?.listed === false ||
+        Object.keys(this.profile).some(k => canonical(offer?.[k] ?? null) !== canonical(this.profile[k])) ||
         (offer.id !== undefined && offer.id !== id)) fail('PAYMENT_PENDING');
     this.save({ ...this.receipt, stage: this.receipt.stage === 'payment_pending' ? 'registered' : this.receipt.stage, offerId: id });
     return this.receipt;
   }
-  async checkListing() { return this.exclusive(() => this.verifyListing()); }
+  async checkListing() { return this.exclusive(() => this.verifyListing(), true); }
   async sendBid() { return this.exclusive(async () => {
     if (this.receipt?.stage !== 'registered') fail('REGISTER_FIRST');
     await this.verifyListing();
-    checkJob((await this.request('/jobs/' + LIMITS.jobId)).body, this.now());
+    const job = await this.request('/jobs/' + LIMITS.jobId);
+    if (job.status !== 200) fail('JOB_NOT_OPEN');
+    checkJob(job.body, this.now());
     await this.assertWallet();
     const account = this.account, body = bidFor(this.receipt.offerId, account, this.approach);
     const time = new Date(this.now()).toISOString(), message = await bidMessage(body, time);
     const signature = await this.rpc('personal_sign', [hexlify(toUtf8Bytes(message)), account]);
     await this.assertWallet(); verifyBidSignature(message, signature, account);
-    if (this.now() - Date.parse(time) >= 240000) fail('AUTHORIZATION_EXPIRED');
+    if (Math.abs(this.now() - Date.parse(time)) >= 240000) fail('AUTHORIZATION_EXPIRED');
+    checkJob(job.body, this.now());
     this.save({ ...this.receipt, stage: 'bid_pending', bidBodySha256: await digest(body), bidTime: time });
     const result = await this.request('/jobs/' + LIMITS.jobId + '/bids', { method: 'POST', body,
       headers: { 'x-lax-time': time, 'x-lax-signature': signature } });
@@ -261,5 +311,5 @@ export class EntryClient {
     this.save({ ...this.receipt, bidHttpStatus: result.status, ...(id ? { bidId: id } : {}) });
     if (![200, 201].includes(result.status) || !id || result.body?.ok === false) fail('BID_PENDING');
     this.save({ ...this.receipt, stage: 'bid_submitted' }); return this.receipt;
-  }); }
+  }, true); }
 }

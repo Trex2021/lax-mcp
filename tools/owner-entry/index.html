@@ -16,6 +16,7 @@
     <section class="card">
       <div class="step"><span>1</span><h2>اتصال کیف پول</h2></div>
       <p>همان کیف پولی را انتخاب کن که آدرس دریافت USDC روی Base را از آن فرستادی.</p>
+      <p class="small">با اتصال، پروفایل عمومی برای بررسی شرایط ثبت به LAX ارسال می‌شود. اتصال به‌تنهایی پرداختی انجام نمی‌دهد.</p>
       <button id="connect">اتصال و بررسی مشخصات</button>
       <dl id="wallet-info" hidden><dt>آدرس متصل</dt><dd id="account" dir="ltr"></dd><dt>شبکه</dt><dd dir="ltr">Base / 8453</dd></dl>
     </section>
@@ -30,9 +31,10 @@
     </section>
     <section class="card" id="bid-section">
       <div class="step"><span>3</span><h2>پیشنهاد انجام پروژه</h2></div>
-      <dl><dt>قیمت پیشنهادی کار</dt><dd dir="ltr">180 USDC</dd><dt>تحویل پیشنهادی</dt><dd>5 نوامبر 2026، ساعت 23:30 تهران<br><span dir="ltr">20:00 UTC</span></dd><dt>مهلت ارسال پیشنهاد</dt><dd>29 اکتبر 2026، ساعت 23:30 تهران</dd></dl>
+      <dl><dt>قیمت پیشنهادی کار</dt><dd dir="ltr">180 USDC</dd><dt>آدرس دریافت دستمزد روی Base</dt><dd id="payee" dir="ltr"></dd><dt>تحویل پیشنهادی</dt><dd>5 نوامبر 2026، ساعت 23:30 تهران<br><span dir="ltr">20:00 UTC</span></dd><dt>مهلت ارسال پیشنهاد</dt><dd>29 اکتبر 2026، ساعت 23:30 تهران</dd></dl>
       <p>این مرحله پیشنهاد انجام کار است. دریافت وجه به انتخاب عامل، توافق جداگانهٔ PACT و پذیرش هر مرحلهٔ کار وابسته است.</p>
       <details><summary>متن کامل پیشنهاد به زبان انگلیسی</summary><pre id="approach" dir="ltr"></pre></details>
+      <details><summary>مشخصات دقیق درخواست پیشنهاد</summary><pre id="bid-body" dir="ltr"></pre></details>
       <label class="consent"><input id="bid-consent" type="checkbox" disabled><span>متن پیشنهاد، قیمت 180 USDC و زمان تحویل را بررسی کرده‌ام و ارسال همین پیشنهاد را تأیید می‌کنم.</span></label>
       <button id="bid" disabled>امضای پیشنهاد و ارسال به LAX</button>
     </section>

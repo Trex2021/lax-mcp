@@ -1,0 +1,97 @@
+{
+  "kind": "owner-entry-helper-local-verification",
+  "recordedAt": "2026-10-25T18:41:30.979735+00:00",
+  "localDate": "2026-10-25",
+  "timezone": "Asia/Tehran",
+  "checkpointCommit": "bdfa2a7cc9753e96394e8921916deed481bb85a1",
+  "node": "v24.22.1",
+  "coreAndFlowTests": {
+    "passed": 27,
+    "failed": 0
+  },
+  "browser": {
+    "version": "Chromium 153.0.8010.0",
+    "scenariosPassed": 8,
+    "realRegistryRequests": 0,
+    "realOperatorSignatures": 0,
+    "evidence": "browser.json",
+    "liveAndroidBitgetTest": false
+  },
+  "build": {
+    "output": "docs/entry",
+    "bundledDependencyLicences": 5,
+    "runtimeCdn": false
+  },
+  "approvedProfilePin": {
+    "sha256": "19a694ea56200cc84361f907a1d1106dc1128d4bd6822f4edf28ecee17c46f92",
+    "privateApprovedProfileAndPublicTemplateAgree": true,
+    "operatorAddressInPublicSourceOrOutput": false
+  },
+  "dependencyAudit": {
+    "knownAdvisories": 0,
+    "scope": "production and development, point-in-time npm audit"
+  },
+  "secretScan": {
+    "tool": "Gitleaks 8.30.1",
+    "officialArchiveSha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+    "publicSnapshotFiles": 90,
+    "findings": 0,
+    "evidence": "gitleaks.json",
+    "publicSnapshotBytes": 512326
+  },
+  "localSemgrep": {
+    "completed": false,
+    "reason": "Restored local scanner runtime could not execute successfully. No new zero-findings result is claimed. Clean isolated CI run is configured."
+  },
+  "ci": {
+    "status": "pending at preparation time",
+    "workflow": ".github/workflows/owner-entry.yml"
+  },
+  "packageRegression": {
+    "passed": true,
+    "exactPublishedArchiveUnchanged": true,
+    "files": 19,
+    "sha1": "2b62af5afb1a9dc005bb96beccbbf95841b56c2f",
+    "evidence": "package-regression.json"
+  },
+  "latestReadOnlyJob": {
+    "httpStatus": 200,
+    "status": "open",
+    "bidCloses": "2026-10-29T20:00:00Z",
+    "ceilingUsdc": 200,
+    "readOn": "2026-10-25"
+  },
+  "deployment": {
+    "githubPagesEnabled": false,
+    "expectedUrlAfterDeployment": "https://trex2021.github.io/lax-mcp/entry/",
+    "verifiedLive": false
+  },
+  "realEntry": {
+    "paymentSignatures": 0,
+    "payments": 0,
+    "listingCreated": false,
+    "bidSent": false,
+    "pactAccepted": false
+  },
+  "sourceHashes": {
+    ".github/workflows/owner-entry.yml": "48d7b2a6627104d79b224d40aebcebea38e5400505c49a0619ec102eee9ec1cc",
+    "docs/entry/app.js": "1a5d4b9717cf60bca773960c316dca4f6e5c7064ee9e8f4f05efe99e18b72c60",
+    "docs/entry/index.html": "de8b9a54c53b9f69a84f529d392e79df6750f9daa1bac7ebe190239f09f9affa",
+    "docs/entry/style.css": "713656ff394ff8eb9797e6f459a058d9181f8218e78b9e69cddf4e3aea728647",
+    "docs/entry/vendor-licenses.txt": "312f10c3b0425be7e18f15de1271e60ea8a3b72ed5e8aeeaa60075c45e800446",
+    "tools/owner-entry/.gitignore": "ff5568f245e74600cddf587fcf9c91b9aed4fa20eea9848eb7d107ae1eeaffc1",
+    "tools/owner-entry/README.md": "856ff4fdc72a01530c126d187f4b9d8ba34b6f798e62179685a870ddd5d4a225",
+    "tools/owner-entry/build.mjs": "fccb63c3a2aff4c08712a4bac108f251640c6e632a633c5645f7689bf7ed2f7b",
+    "tools/owner-entry/index.html": "de8b9a54c53b9f69a84f529d392e79df6750f9daa1bac7ebe190239f09f9affa",
+    "tools/owner-entry/package-lock.json": "8ddbb070af0cde9e3fdf0858f1ff363d445198ae97f4e37caee8f459f7e44d53",
+    "tools/owner-entry/package.json": "12d869383caee8d83ef2799794fc51ad57c86dfd0348c455a326092337dcaa25",
+    "tools/owner-entry/proposal.md": "0498eb2540365b67afb29bdebd3dcd66bc2f07c050b1d0c899d9278e724d20c4",
+    "tools/owner-entry/src/app.mjs": "e1a66f5f4a50bafb44cd207682cb1c22c2aed789ee3f02c8d766acb41376a2a9",
+    "tools/owner-entry/src/core.mjs": "7d1d013a2f3d8c146e8a30c24948367b0955b0895af45141c05cfc7cc52dd95f",
+    "tools/owner-entry/style.css": "713656ff394ff8eb9797e6f459a058d9181f8218e78b9e69cddf4e3aea728647",
+    "tools/owner-entry/test/browser.mjs": "22391a14a14781dd5d2387ca211433ea78f56963114cafecd194ab7b2ab9f890",
+    "tools/owner-entry/test/core.test.mjs": "6ff40a31114d15a26afc5a8385bba7b1fdc6d8d80dac012c51530eecc139802b",
+    "tools/owner-entry/test/fixtures.mjs": "1e21987145b3ac4a5f0a0f6e98f0359340ad798efa11ea806abbf1814af47e9a",
+    "tools/owner-entry/test/flow.test.mjs": "cbd56a73790039bd51a472e0545fc34e7ea0dfaab5dfb97061b2671fa35177e9"
+  }
+}
