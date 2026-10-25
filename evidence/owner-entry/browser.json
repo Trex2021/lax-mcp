@@ -1,0 +1,65 @@
+{
+  "browser": "153.0.8010.0",
+  "scenarios": 8,
+  "passed": [
+    {
+      "name": "No provider: Bitget link, disabled financial controls, mobile layout",
+      "viewportWidth": 360,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "Production bundle rejects every account except the pinned approved profile",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "An embedded signing page cannot connect or request a signature",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "Separate fee and bid consent, real fixture signatures, receipt download and reload",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 1,
+      "fixtureBids": 1
+    },
+    {
+      "name": "Wallet cancellation sends no paid request",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "Changed fee terms stop before signing",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "Blocked receipt storage stops before signing",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 0,
+      "fixtureBids": 0
+    },
+    {
+      "name": "Lost payment reply stays locked after reload; explicit GET readback recovers it",
+      "viewportWidth": 390,
+      "passed": true,
+      "fixturePayments": 1,
+      "fixtureBids": 0
+    }
+  ],
+  "realRegistryRequests": 0,
+  "realWalletSignatures": 0,
+  "productionBundleUnchanged": true
+}

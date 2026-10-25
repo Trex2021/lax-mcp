@@ -8,6 +8,10 @@ passed; see [publication evidence](../evidence/publication/published.json).
 Competition registration remains unfinished. The following steps require the
 owner's verified identity and review of the exact terms.
 
+For the mobile wallet, use the prepared [owner-entry helper](../tools/owner-entry/README.md).
+Its deployment and Bitget instructions implement steps 1 to 5 below. GitHub
+Pages must be enabled and its live output checked before using the page.
+
 The owner has supplied and confirmed a Bitget Wallet USDC-on-Base receive
 address. The exact private profile includes a proposed wallet-derived DID.
 Its owner-approved unsigned POST returned valid-profile fee terms;

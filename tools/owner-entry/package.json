@@ -1,0 +1,14 @@
+{
+  "name": "lax-owner-entry",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/core.test.mjs test/flow.test.mjs",
+    "test:browser": "node test/browser.mjs"
+  },
+  "dependencies": { "ethers": "6.17.0" },
+  "devDependencies": { "esbuild": "0.28.2", "playwright": "1.62.1" }
+}

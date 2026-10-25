@@ -64,3 +64,30 @@ by this table. See [entry status](../submission/STATUS.md).
 passed 59 tests on Node 20, 22 and 24 for commit
 ab7ec04ef6887a4afaf857738ad00ea77d4905f9. [Its record](../evidence/ci.json)
 is historical and does not establish the 0.1.1 outcome.
+
+## Owner-entry helper, 25 October 2026
+
+The mobile signing helper is separate from the released MCP package. Its
+27 offline core and flow tests and eight intercepted Chromium scenarios
+passed. Browser checks found and corrected a browser-only unbound-fetch
+failure before publication. They cover separate fee/bid consent, real
+cryptographic signatures from an in-memory test wallet, cancellation,
+changed fees, unavailable storage, receipt download and recovery after a
+lost response and reload. Production's profile pin and output remain intact.
+No browser test reaches the real registry or the operator's wallet.
+
+The local clean-install check reproduced the exact 19-file npm archive;
+its SHA-1 is still `2b62af5afb1a9dc005bb96beccbbf95841b56c2f`.
+Dependency audit reported zero known advisories at check time. A fresh,
+checksum-verified Gitleaks 8.30.1 scan of the public working snapshot found
+no leaks. Local Semgrep could not complete with the restored runtime; the
+dedicated workflow runs it in a clean isolated environment. CI outcomes
+must be checked against the actual helper commit, separately from earlier
+MCP security evidence.
+
+See [helper checks](../evidence/owner-entry/checks.json),
+[browser results](../evidence/owner-entry/browser.json),
+[package regression](../evidence/owner-entry/package-regression.json) and
+[source and phone instructions](../tools/owner-entry/README.md).
+GitHub Pages deployment and a real Android Bitget flow remain unverified.
+No actual payment, listing, bid or PACT is represented by these checks.

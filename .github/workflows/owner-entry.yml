@@ -1,0 +1,59 @@
+name: Owner entry helper
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/owner-entry/**'
+      - 'docs/entry/**'
+      - 'submission/offer-draft.json'
+      - '.github/workflows/owner-entry.yml'
+  pull_request:
+    paths:
+      - 'tools/owner-entry/**'
+      - 'docs/entry/**'
+      - 'submission/offer-draft.json'
+      - '.github/workflows/owner-entry.yml'
+permissions:
+  contents: read
+jobs:
+  offline-owner-flow:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: tools/owner-entry
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: tools/owner-entry/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run build
+      - name: Verify checked-in static build
+        run: git diff --exit-code -- ../../docs/entry ../../docs/.nojekyll
+      - name: Test owner flow against intercepted fixtures
+        env:
+          LAX_BROWSER_EXECUTABLE: /usr/bin/google-chrome
+        run: npm run test:browser
+      - run: npm audit --audit-level=moderate
+  static-entry-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned scanner in an isolated environment
+        run: |
+          python3 -m venv "$RUNNER_TEMP/lax-semgrep"
+          "$RUNNER_TEMP/lax-semgrep/bin/pip" install --disable-pip-version-check semgrep==1.182.1
+      - name: Check helper source and workflow
+        run: |
+          "$RUNNER_TEMP/lax-semgrep/bin/semgrep" scan --metrics off --disable-version-check \
+            --config p/javascript --config p/github-actions --error \
+            tools/owner-entry .github/workflows/owner-entry.yml

@@ -72,8 +72,8 @@
   "financialSignatures": 0,
   "payments": 0,
   "pactAccepted": false,
-  "updated": "2026-10-23T22:47:17.768327+00:00",
-  "organizerMetadataNote": "Job and OpenAPI fields are earlier read-only snapshots. The fee quote was refreshed by one owner-approved unsigned profile POST on 24 October 2026 (Asia/Tehran).",
+  "updated": "2026-10-25T18:41:30.979735+00:00",
+  "organizerMetadataNote": "The job was re-read with HTTP 200 on 25 October 2026 and remains open. The OpenAPI fields are review snapshots. The exact owner-approved unsigned profile quote is from 24 October 2026 (Asia/Tehran); the helper revalidates terms in the owner browser before signing.",
   "currentQuoteEvidence": "evidence/listing-quote-2026-10-24.json",
   "currentQuoteRequirements": {
     "scheme": "exact",
@@ -86,5 +86,15 @@
       "name": "USD Coin",
       "version": "2"
     }
+  },
+  "ownerEntryHelper": {
+    "source": "tools/owner-entry",
+    "staticOutput": "docs/entry",
+    "tests": 27,
+    "browserScenarios": 8,
+    "evidence": "evidence/owner-entry/checks.json",
+    "githubPagesEnabled": false,
+    "liveWalletFlowVerified": false,
+    "ownerSignaturesPending": true
   }
 }
